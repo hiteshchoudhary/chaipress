@@ -2,6 +2,7 @@ source: ''
 timezone: Etc/UTC
 
 paths:
+  static: public
   uploads: public/images
   data: data
 

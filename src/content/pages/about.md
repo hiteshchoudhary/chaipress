@@ -5,7 +5,7 @@ content_blocks:
   - _name: global/hero
     heading: Building the Future of the Web
     subheading: We're a passionate team on a mission to make the web better for everyone.
-    image: /public/images/screenshot-2026-02-27-at-5-14-28-am.png
+    image: /images/screenshot-2026-02-27-at-5-14-28-am.png
     image_alt: Team working together
     primary_button:
       text: Join Our Team

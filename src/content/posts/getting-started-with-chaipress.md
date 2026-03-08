@@ -3,7 +3,7 @@ title: Getting Started with Chaipress
 description: Learn how to set up your first site with Chaipress in under 5 minutes.
 author: Alex Johnson
 date: 2026-03-01T00:00:00Z
-image: /public/images/screenshot-2026-02-27-at-5-14-28-am.png
+image: /images/screenshot-2026-02-27-at-5-14-28-am.png
 image_alt: Chaipress dashboard
 tags:
   - Getting Started
