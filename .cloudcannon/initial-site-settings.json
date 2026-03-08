@@ -3,6 +3,11 @@
     "install_command": "npm install",
     "build_command": "npm run build",
     "output_path": "dist",
-    "environment_variables": []
+    "environment_variables": [
+      {
+        "key": "NODE_VERSION",
+        "value": "20"
+      }
+    ]
   }
 }

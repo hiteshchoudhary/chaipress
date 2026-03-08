@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Ensure we're on Node 20+ for Tailwind CSS v4
+if command -v nvm &> /dev/null; then
+  nvm use 20 || nvm install 20
+fi
