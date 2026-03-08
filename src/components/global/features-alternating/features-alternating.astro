@@ -10,12 +10,14 @@ interface Feature {
 
 interface Props {
   _name?: string;
+  _cms_bind?: string;
   heading?: string;
   subheading?: string;
   features?: Feature[];
 }
 
 const {
+  _cms_bind,
   heading = 'How It Works',
   subheading = 'Simple steps to get started.',
   features = [
@@ -27,15 +29,15 @@ const {
 
 <SectionWrapper>
   <div class="mx-auto max-w-3xl text-center">
-    <h2 class="text-3xl font-bold tracking-tight text-secondary sm:text-4xl">{heading}</h2>
-    <p class="mt-4 text-lg text-text-muted">{subheading}</p>
+    <h2 data-cms-bind={_cms_bind && `${_cms_bind}.heading`} class="text-3xl font-bold tracking-tight text-secondary sm:text-4xl">{heading}</h2>
+    <p data-cms-bind={_cms_bind && `${_cms_bind}.subheading`} class="mt-4 text-lg text-text-muted">{subheading}</p>
   </div>
   <div class="mt-16 space-y-24">
     {features.map((feature, i) => (
       <div class:list={['grid items-center gap-12 lg:grid-cols-2', i % 2 === 1 && 'lg:direction-rtl']}>
         <div class={i % 2 === 1 ? 'lg:order-2' : ''}>
-          <h3 class="text-2xl font-bold text-secondary">{feature.title}</h3>
-          <p class="mt-4 text-lg text-text-muted leading-relaxed">{feature.description}</p>
+          <h3 data-cms-bind={_cms_bind && `${_cms_bind}.features.${i}.title`} class="text-2xl font-bold text-secondary">{feature.title}</h3>
+          <p data-cms-bind={_cms_bind && `${_cms_bind}.features.${i}.description`} class="mt-4 text-lg text-text-muted leading-relaxed">{feature.description}</p>
         </div>
         <div class={i % 2 === 1 ? 'lg:order-1' : ''}>
           <img

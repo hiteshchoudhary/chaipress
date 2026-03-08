@@ -11,12 +11,14 @@ interface Testimonial {
 
 interface Props {
   _name?: string;
+  _cms_bind?: string;
   heading?: string;
   subheading?: string;
   testimonials?: Testimonial[];
 }
 
 const {
+  _cms_bind,
   heading = 'What Our Customers Say',
   subheading = 'Trusted by thousands of teams worldwide.',
   testimonials = [
@@ -29,11 +31,11 @@ const {
 
 <SectionWrapper>
   <div class="mx-auto max-w-3xl text-center">
-    <h2 class="text-3xl font-bold tracking-tight text-secondary sm:text-4xl">{heading}</h2>
-    <p class="mt-4 text-lg text-text-muted">{subheading}</p>
+    <h2 data-cms-bind={_cms_bind && `${_cms_bind}.heading`} class="text-3xl font-bold tracking-tight text-secondary sm:text-4xl">{heading}</h2>
+    <p data-cms-bind={_cms_bind && `${_cms_bind}.subheading`} class="mt-4 text-lg text-text-muted">{subheading}</p>
   </div>
   <div class="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-    {testimonials.map((t) => (
+    {testimonials.map((t, i) => (
       <div class="rounded-[var(--radius-theme)] border border-border bg-surface p-8">
         {t.rating && (
           <div class="mb-4 flex gap-1 text-accent">
@@ -42,14 +44,14 @@ const {
             ))}
           </div>
         )}
-        <blockquote class="text-text-muted leading-relaxed">"{t.quote}"</blockquote>
+        <blockquote data-cms-bind={_cms_bind && `${_cms_bind}.testimonials.${i}.quote`} class="text-text-muted leading-relaxed">"{t.quote}"</blockquote>
         <div class="mt-6 flex items-center gap-3">
           {t.avatar && (
             <img src={t.avatar} alt={t.author} class="h-10 w-10 rounded-full object-cover" loading="lazy" />
           )}
           <div>
-            <p class="font-semibold text-secondary">{t.author}</p>
-            <p class="text-sm text-text-muted">{t.role}</p>
+            <p data-cms-bind={_cms_bind && `${_cms_bind}.testimonials.${i}.author`} class="font-semibold text-secondary">{t.author}</p>
+            <p data-cms-bind={_cms_bind && `${_cms_bind}.testimonials.${i}.role`} class="text-sm text-text-muted">{t.role}</p>
           </div>
         </div>
       </div>

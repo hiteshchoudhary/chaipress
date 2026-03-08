@@ -19,6 +19,7 @@ interface PricingTier {
 
 interface Props {
   _name?: string;
+  _cms_bind?: string;
   heading?: string;
   subheading?: string;
   show_annual_toggle?: boolean;
@@ -26,48 +27,25 @@ interface Props {
 }
 
 const {
+  _cms_bind,
   heading = 'Simple, Transparent Pricing',
   subheading = 'Choose the plan that works for you.',
   show_annual_toggle = true,
   tiers = [
     {
-      name: 'Starter',
-      monthly_price: '$9',
-      annual_price: '$7',
-      description: 'For individuals getting started.',
-      features: [
-        { text: '1 Project', included: true },
-        { text: '5GB Storage', included: true },
-        { text: 'Priority Support', included: false },
-      ],
-      button: { text: 'Get Started', link: '#' },
-      highlighted: false,
+      name: 'Starter', monthly_price: '$9', annual_price: '$7', description: 'For individuals getting started.',
+      features: [{ text: '1 Project', included: true }, { text: '5GB Storage', included: true }, { text: 'Priority Support', included: false }],
+      button: { text: 'Get Started', link: '#' }, highlighted: false,
     },
     {
-      name: 'Pro',
-      monthly_price: '$29',
-      annual_price: '$24',
-      description: 'For growing teams.',
-      features: [
-        { text: 'Unlimited Projects', included: true },
-        { text: '50GB Storage', included: true },
-        { text: 'Priority Support', included: true },
-      ],
-      button: { text: 'Get Started', link: '#' },
-      highlighted: true,
+      name: 'Pro', monthly_price: '$29', annual_price: '$24', description: 'For growing teams.',
+      features: [{ text: 'Unlimited Projects', included: true }, { text: '50GB Storage', included: true }, { text: 'Priority Support', included: true }],
+      button: { text: 'Get Started', link: '#' }, highlighted: true,
     },
     {
-      name: 'Enterprise',
-      monthly_price: '$99',
-      annual_price: '$79',
-      description: 'For large organizations.',
-      features: [
-        { text: 'Unlimited Projects', included: true },
-        { text: 'Unlimited Storage', included: true },
-        { text: '24/7 Support', included: true },
-      ],
-      button: { text: 'Contact Sales', link: '#' },
-      highlighted: false,
+      name: 'Enterprise', monthly_price: '$99', annual_price: '$79', description: 'For large organizations.',
+      features: [{ text: 'Unlimited Projects', included: true }, { text: 'Unlimited Storage', included: true }, { text: '24/7 Support', included: true }],
+      button: { text: 'Contact Sales', link: '#' }, highlighted: false,
     },
   ],
 } = Astro.props;
@@ -75,16 +53,12 @@ const {
 
 <SectionWrapper>
   <div class="mx-auto max-w-3xl text-center">
-    <h2 class="text-3xl font-bold tracking-tight text-secondary sm:text-4xl">{heading}</h2>
-    <p class="mt-4 text-lg text-text-muted">{subheading}</p>
+    <h2 data-cms-bind={_cms_bind && `${_cms_bind}.heading`} class="text-3xl font-bold tracking-tight text-secondary sm:text-4xl">{heading}</h2>
+    <p data-cms-bind={_cms_bind && `${_cms_bind}.subheading`} class="mt-4 text-lg text-text-muted">{subheading}</p>
     {show_annual_toggle && (
       <div class="mt-8 flex items-center justify-center gap-3">
         <span class="text-sm text-text-muted" data-pricing-label="monthly">Monthly</span>
-        <button
-          id="pricing-toggle"
-          class="relative h-7 w-12 rounded-full bg-primary/20 transition-colors"
-          aria-label="Toggle annual pricing"
-        >
+        <button id="pricing-toggle" class="relative h-7 w-12 rounded-full bg-primary/20 transition-colors" aria-label="Toggle annual pricing">
           <span class="absolute left-1 top-1 h-5 w-5 rounded-full bg-primary transition-transform" id="pricing-toggle-dot"></span>
         </button>
         <span class="text-sm text-text-muted" data-pricing-label="annual">Annual</span>
@@ -92,22 +66,18 @@ const {
     )}
   </div>
   <div class="mt-12 grid gap-8 lg:grid-cols-3">
-    {tiers.map((tier) => (
+    {tiers.map((tier, ti) => (
       <div class:list={[
         'rounded-[var(--radius-theme)] border p-8 flex flex-col',
         tier.highlighted ? 'border-primary shadow-lg ring-2 ring-primary relative' : 'border-border',
       ]}>
         {tier.highlighted && (
-          <span class="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-primary px-4 py-1 text-xs font-semibold text-white">
-            Most Popular
-          </span>
+          <span class="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-primary px-4 py-1 text-xs font-semibold text-white">Most Popular</span>
         )}
-        <h3 class="text-xl font-bold text-secondary">{tier.name}</h3>
-        {tier.description && <p class="mt-2 text-sm text-text-muted">{tier.description}</p>}
+        <h3 data-cms-bind={_cms_bind && `${_cms_bind}.tiers.${ti}.name`} class="text-xl font-bold text-secondary">{tier.name}</h3>
+        {tier.description && <p data-cms-bind={_cms_bind && `${_cms_bind}.tiers.${ti}.description`} class="mt-2 text-sm text-text-muted">{tier.description}</p>}
         <div class="mt-6">
-          <span class="text-4xl font-bold text-secondary" data-monthly-price={tier.monthly_price} data-annual-price={tier.annual_price || tier.monthly_price}>
-            {tier.monthly_price}
-          </span>
+          <span class="text-4xl font-bold text-secondary" data-monthly-price={tier.monthly_price} data-annual-price={tier.annual_price || tier.monthly_price}>{tier.monthly_price}</span>
           <span class="text-text-muted">/mo</span>
         </div>
         <ul class="mt-8 flex-1 space-y-3">
@@ -123,12 +93,7 @@ const {
           ))}
         </ul>
         <div class="mt-8">
-          <Button
-            text={tier.button.text}
-            link={tier.button.link}
-            variant={tier.highlighted ? 'primary' : 'outline'}
-            class="w-full"
-          />
+          <Button text={tier.button.text} link={tier.button.link} variant={tier.highlighted ? 'primary' : 'outline'} class="w-full" />
         </div>
       </div>
     ))}

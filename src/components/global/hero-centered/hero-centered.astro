@@ -4,6 +4,7 @@ import Button from '../../shared/Button.astro';
 
 interface Props {
   _name?: string;
+  _cms_bind?: string;
   heading?: string;
   subheading?: string;
   badge?: string;
@@ -13,6 +14,7 @@ interface Props {
 }
 
 const {
+  _cms_bind,
   heading = 'Everything You Need in One Place',
   subheading = 'Powerful features to help you manage and grow your business.',
   badge = '',
@@ -25,14 +27,14 @@ const {
 <SectionWrapper>
   <div class="mx-auto max-w-3xl text-center">
     {badge && (
-      <span class="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary mb-6">
+      <span data-cms-bind={_cms_bind && `${_cms_bind}.badge`} class="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary mb-6">
         {badge}
       </span>
     )}
-    <h1 class="text-4xl font-bold tracking-tight text-secondary sm:text-5xl lg:text-6xl">
+    <h1 data-cms-bind={_cms_bind && `${_cms_bind}.heading`} class="text-4xl font-bold tracking-tight text-secondary sm:text-5xl lg:text-6xl">
       {heading}
     </h1>
-    <p class="mt-6 text-lg text-text-muted leading-relaxed">
+    <p data-cms-bind={_cms_bind && `${_cms_bind}.subheading`} class="mt-6 text-lg text-text-muted leading-relaxed">
       {subheading}
     </p>
     <div class="mt-8 flex flex-wrap justify-center gap-4">

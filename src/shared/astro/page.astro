@@ -64,7 +64,7 @@ const componentMap: Record<string, any> = {
     if (!Component) return null;
     return (
       <div data-cms-bind={`#content_blocks.${index}`} data-component={block._name}>
-        <Component {...block} />
+        <Component {...block} _cms_bind={`#content_blocks.${index}`} />
       </div>
     );
   })}

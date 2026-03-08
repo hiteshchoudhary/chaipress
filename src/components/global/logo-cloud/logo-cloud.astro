@@ -9,11 +9,13 @@ interface Logo {
 
 interface Props {
   _name?: string;
+  _cms_bind?: string;
   heading?: string;
   logos?: Logo[];
 }
 
 const {
+  _cms_bind,
   heading = 'Trusted by Leading Companies',
   logos = [
     { image: '/images/logos/logo-1.svg', alt: 'Company 1', link: '#' },
@@ -27,7 +29,7 @@ const {
 
 <SectionWrapper>
   {heading && (
-    <p class="mb-8 text-center text-sm font-medium uppercase tracking-wider text-text-muted">{heading}</p>
+    <p data-cms-bind={_cms_bind && `${_cms_bind}.heading`} class="mb-8 text-center text-sm font-medium uppercase tracking-wider text-text-muted">{heading}</p>
   )}
   <div class="flex flex-wrap items-center justify-center gap-8 md:gap-12">
     {logos.map((logo) => {

@@ -4,6 +4,7 @@ import Button from '../../shared/Button.astro';
 
 interface Props {
   _name?: string;
+  _cms_bind?: string;
   heading?: string;
   content?: string;
   image?: string;
@@ -12,6 +13,7 @@ interface Props {
 }
 
 const {
+  _cms_bind,
   heading = 'Take the Next Step',
   content = 'Start building something amazing today. No credit card required.',
   image = '/images/hero/cta-image.jpg',
@@ -23,8 +25,8 @@ const {
 <SectionWrapper background="light">
   <div class="grid items-center gap-12 lg:grid-cols-2">
     <div>
-      <h2 class="text-3xl font-bold tracking-tight text-secondary sm:text-4xl">{heading}</h2>
-      <p class="mt-4 text-lg text-text-muted leading-relaxed">{content}</p>
+      <h2 data-cms-bind={_cms_bind && `${_cms_bind}.heading`} class="text-3xl font-bold tracking-tight text-secondary sm:text-4xl">{heading}</h2>
+      <p data-cms-bind={_cms_bind && `${_cms_bind}.content`} class="mt-4 text-lg text-text-muted leading-relaxed">{content}</p>
       {button && (
         <div class="mt-6">
           <Button text={button.text} link={button.link} variant="primary" size="lg" />

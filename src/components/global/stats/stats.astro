@@ -8,12 +8,14 @@ interface Stat {
 
 interface Props {
   _name?: string;
+  _cms_bind?: string;
   heading?: string;
   subheading?: string;
   stats?: Stat[];
 }
 
 const {
+  _cms_bind,
   heading = 'By the Numbers',
   subheading = '',
   stats = [
@@ -28,15 +30,15 @@ const {
 <SectionWrapper background="dark">
   {heading && (
     <div class="mx-auto max-w-3xl text-center mb-12">
-      <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">{heading}</h2>
-      {subheading && <p class="mt-4 text-lg opacity-80">{subheading}</p>}
+      <h2 data-cms-bind={_cms_bind && `${_cms_bind}.heading`} class="text-3xl font-bold tracking-tight sm:text-4xl">{heading}</h2>
+      {subheading && <p data-cms-bind={_cms_bind && `${_cms_bind}.subheading`} class="mt-4 text-lg opacity-80">{subheading}</p>}
     </div>
   )}
   <div class="grid grid-cols-2 gap-8 md:grid-cols-4">
-    {stats.map((stat) => (
+    {stats.map((stat, i) => (
       <div class="text-center">
-        <p class="text-4xl font-bold text-accent">{stat.value}</p>
-        <p class="mt-2 text-sm uppercase tracking-wider opacity-80">{stat.label}</p>
+        <p data-cms-bind={_cms_bind && `${_cms_bind}.stats.${i}.value`} class="text-4xl font-bold text-accent">{stat.value}</p>
+        <p data-cms-bind={_cms_bind && `${_cms_bind}.stats.${i}.label`} class="mt-2 text-sm uppercase tracking-wider opacity-80">{stat.label}</p>
       </div>
     ))}
   </div>
