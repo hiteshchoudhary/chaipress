@@ -58,15 +58,13 @@ const componentMap: Record<string, any> = {
 };
 ---
 
-<div data-editable="array" data-prop="content_blocks">
+<div class="contents" data-cms-bind="#content_blocks">
   {content_blocks.map((block: any, index: number) => {
     const Component = componentMap[block._name];
     if (!Component) return null;
     return (
-      <div data-editable="array-item" data-index={index}>
-        <div data-editable="component" data-name={block._name}>
-          <Component {...block} />
-        </div>
+      <div data-cms-bind={`#content_blocks.${index}`} data-component={block._name}>
+        <Component {...block} />
       </div>
     );
   })}
