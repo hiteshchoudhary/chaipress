@@ -14,6 +14,7 @@ collections_config:
     output: true
     _enabled_editors:
       - visual
+      - content
       - data
     add_options:
       - name: Blank Page
