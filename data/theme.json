@@ -1,7 +1,7 @@
 {
-  "primary_color": "#4F46E5",
-  "secondary_color": "#0F172A",
-  "accent_color": "#F59E0B",
+  "primary_color": "#4f46e5",
+  "secondary_color": "#0f172a",
+  "accent_color": "#f59e0b",
   "font_heading": "Inter",
   "font_body": "Inter",
   "border_radius": "medium",
