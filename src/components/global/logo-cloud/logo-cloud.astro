@@ -1,0 +1,38 @@
+---
+import SectionWrapper from '../../shared/SectionWrapper.astro';
+
+interface Logo {
+  image: string;
+  alt: string;
+  link?: string;
+}
+
+interface Props {
+  _name?: string;
+  heading?: string;
+  logos?: Logo[];
+}
+
+const {
+  heading = 'Trusted by Leading Companies',
+  logos = [
+    { image: '/images/logos/logo-1.svg', alt: 'Company 1', link: '#' },
+    { image: '/images/logos/logo-2.svg', alt: 'Company 2', link: '#' },
+    { image: '/images/logos/logo-3.svg', alt: 'Company 3', link: '#' },
+    { image: '/images/logos/logo-4.svg', alt: 'Company 4', link: '#' },
+    { image: '/images/logos/logo-5.svg', alt: 'Company 5', link: '#' },
+  ],
+} = Astro.props;
+---
+
+<SectionWrapper>
+  {heading && (
+    <p class="mb-8 text-center text-sm font-medium uppercase tracking-wider text-text-muted">{heading}</p>
+  )}
+  <div class="flex flex-wrap items-center justify-center gap-8 md:gap-12">
+    {logos.map((logo) => {
+      const img = <img src={logo.image} alt={logo.alt} class="h-8 max-w-[120px] object-contain opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all" loading="lazy" />;
+      return logo.link ? <a href={logo.link} target="_blank" rel="noopener noreferrer">{img}</a> : img;
+    })}
+  </div>
+</SectionWrapper>

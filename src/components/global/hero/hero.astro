@@ -1,0 +1,54 @@
+---
+import SectionWrapper from '../../shared/SectionWrapper.astro';
+import Button from '../../shared/Button.astro';
+
+interface Props {
+  _name?: string;
+  heading?: string;
+  subheading?: string;
+  image?: string;
+  image_alt?: string;
+  primary_button?: { text: string; link: string };
+  secondary_button?: { text: string; link: string };
+  show_secondary_button?: boolean;
+}
+
+const {
+  heading = 'Launch Your Product with Confidence',
+  subheading = 'The modern platform for building faster.',
+  image = '/images/hero/hero-default.jpg',
+  image_alt = 'Product hero image',
+  primary_button = { text: 'Get Started', link: '#' },
+  secondary_button = { text: 'Learn More', link: '#' },
+  show_secondary_button = true,
+} = Astro.props;
+---
+
+<SectionWrapper>
+  <div class="grid items-center gap-12 lg:grid-cols-2">
+    <div>
+      <h1 class="text-4xl font-bold tracking-tight text-secondary sm:text-5xl lg:text-6xl">
+        {heading}
+      </h1>
+      <p class="mt-6 text-lg text-text-muted leading-relaxed">
+        {subheading}
+      </p>
+      <div class="mt-8 flex flex-wrap gap-4">
+        {primary_button && (
+          <Button text={primary_button.text} link={primary_button.link} variant="primary" size="lg" />
+        )}
+        {show_secondary_button && secondary_button && (
+          <Button text={secondary_button.text} link={secondary_button.link} variant="outline" size="lg" />
+        )}
+      </div>
+    </div>
+    <div class="relative">
+      <img
+        src={image}
+        alt={image_alt}
+        class="w-full rounded-[var(--radius-theme)] shadow-xl"
+        loading="eager"
+      />
+    </div>
+  </div>
+</SectionWrapper>

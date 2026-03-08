@@ -1,0 +1,32 @@
+---
+interface Props {
+  text: string;
+  link: string;
+  variant?: 'primary' | 'secondary' | 'outline';
+  size?: 'sm' | 'md' | 'lg';
+  class?: string;
+}
+
+const { text, link, variant = 'primary', size = 'md', class: className = '' } = Astro.props;
+
+const baseClasses = 'inline-flex items-center justify-center font-medium transition-colors duration-200';
+
+const variantClasses: Record<string, string> = {
+  primary: 'bg-primary text-white hover:bg-primary-dark',
+  secondary: 'bg-secondary text-white hover:opacity-90',
+  outline: 'border-2 border-primary text-primary hover:bg-primary hover:text-white',
+};
+
+const sizeClasses: Record<string, string> = {
+  sm: 'px-4 py-2 text-sm',
+  md: 'px-6 py-3 text-base',
+  lg: 'px-8 py-4 text-lg',
+};
+---
+
+<a
+  href={link}
+  class:list={[baseClasses, variantClasses[variant], sizeClasses[size], 'rounded-[var(--radius-theme)]', className]}
+>
+  {text}
+</a>

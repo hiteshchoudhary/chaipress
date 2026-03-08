@@ -1,0 +1,108 @@
+label: Pricing Table
+icon: payments
+tags:
+  - Pricing
+
+value:
+  _name: global/pricing-table
+  heading: "Simple, Transparent Pricing"
+  subheading: "Choose the plan that works for you."
+  show_annual_toggle: true
+  tiers:
+    - name: "Starter"
+      monthly_price: "$9"
+      annual_price: "$7"
+      description: "For individuals getting started."
+      features:
+        - text: "1 Project"
+          included: true
+        - text: "5GB Storage"
+          included: true
+        - text: "Priority Support"
+          included: false
+      button:
+        text: "Get Started"
+        link: "#"
+      highlighted: false
+    - name: "Pro"
+      monthly_price: "$29"
+      annual_price: "$24"
+      description: "For growing teams."
+      features:
+        - text: "Unlimited Projects"
+          included: true
+        - text: "50GB Storage"
+          included: true
+        - text: "Priority Support"
+          included: true
+      button:
+        text: "Get Started"
+        link: "#"
+      highlighted: true
+    - name: "Enterprise"
+      monthly_price: "$99"
+      annual_price: "$79"
+      description: "For large organizations."
+      features:
+        - text: "Unlimited Projects"
+          included: true
+        - text: "Unlimited Storage"
+          included: true
+        - text: "24/7 Support"
+          included: true
+      button:
+        text: "Contact Sales"
+        link: "#"
+      highlighted: false
+
+preview:
+  text:
+    - key: heading
+  icon: payments
+
+_inputs:
+  heading:
+    type: text
+  subheading:
+    type: textarea
+  show_annual_toggle:
+    type: switch
+
+_structures:
+  tiers:
+    values:
+      - label: Pricing Tier
+        icon: sell
+        value:
+          name: "Plan Name"
+          monthly_price: "$0"
+          annual_price: "$0"
+          description: "Plan description"
+          features: []
+          button:
+            text: "Get Started"
+            link: "#"
+          highlighted: false
+        _inputs:
+          name:
+            type: text
+          monthly_price:
+            type: text
+          annual_price:
+            type: text
+          description:
+            type: textarea
+          highlighted:
+            type: switch
+  features:
+    values:
+      - label: Feature
+        icon: check
+        value:
+          text: "Feature text"
+          included: true
+        _inputs:
+          text:
+            type: text
+          included:
+            type: switch

@@ -1,0 +1,38 @@
+label: Hero
+icon: view_quilt
+tags:
+  - Hero
+
+value:
+  _name: global/hero
+  heading: "Launch Your Product with Confidence"
+  subheading: "The modern platform for building faster."
+  image: /images/hero/hero-default.jpg
+  image_alt: "Product hero image"
+  primary_button:
+    text: "Get Started"
+    link: "#"
+  secondary_button:
+    text: "Learn More"
+    link: "#"
+  show_secondary_button: true
+
+preview:
+  text:
+    - key: heading
+  image:
+    - key: image
+  icon: view_quilt
+
+_inputs:
+  heading:
+    type: text
+  subheading:
+    type: textarea
+  image:
+    type: image
+  image_alt:
+    type: text
+    comment: Descriptive text for accessibility
+  show_secondary_button:
+    type: switch

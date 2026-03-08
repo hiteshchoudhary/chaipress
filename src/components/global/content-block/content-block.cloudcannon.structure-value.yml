@@ -1,0 +1,35 @@
+label: Content Block
+icon: article
+tags:
+  - Content
+
+value:
+  _name: global/content-block
+  heading: "Our Story"
+  content: "We started with a simple idea: make the web easier for everyone."
+  image: ""
+  image_alt: ""
+  image_position: right
+
+preview:
+  text:
+    - key: heading
+  icon: article
+
+_inputs:
+  heading:
+    type: text
+  content:
+    type: markdown
+  image:
+    type: image
+  image_alt:
+    type: text
+  image_position:
+    type: select
+    options:
+      values:
+        - left
+        - right
+        - top
+        - none

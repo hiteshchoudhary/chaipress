@@ -1,0 +1,66 @@
+---
+import SectionWrapper from '../../shared/SectionWrapper.astro';
+
+interface Props {
+  _name?: string;
+  heading?: string;
+  subheading?: string;
+  target_date?: string;
+}
+
+const {
+  heading = 'Event Starts In',
+  subheading = 'Don\'t miss out — register today.',
+  target_date = '2026-04-15T09:00:00',
+} = Astro.props;
+---
+
+<SectionWrapper background="primary">
+  <div class="mx-auto max-w-3xl text-center">
+    <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">{heading}</h2>
+    {subheading && <p class="mt-4 text-lg opacity-90">{subheading}</p>}
+    <div class="mt-8 flex justify-center gap-6" id="countdown" data-target={target_date}>
+      <div class="text-center">
+        <span class="block text-4xl font-bold md:text-5xl" id="countdown-days">00</span>
+        <span class="mt-1 block text-sm uppercase tracking-wider opacity-80">Days</span>
+      </div>
+      <div class="text-center">
+        <span class="block text-4xl font-bold md:text-5xl" id="countdown-hours">00</span>
+        <span class="mt-1 block text-sm uppercase tracking-wider opacity-80">Hours</span>
+      </div>
+      <div class="text-center">
+        <span class="block text-4xl font-bold md:text-5xl" id="countdown-minutes">00</span>
+        <span class="mt-1 block text-sm uppercase tracking-wider opacity-80">Minutes</span>
+      </div>
+      <div class="text-center">
+        <span class="block text-4xl font-bold md:text-5xl" id="countdown-seconds">00</span>
+        <span class="mt-1 block text-sm uppercase tracking-wider opacity-80">Seconds</span>
+      </div>
+    </div>
+  </div>
+</SectionWrapper>
+
+<script>
+  const el = document.getElementById('countdown');
+  const target = el?.dataset.target;
+  if (target) {
+    const targetDate = new Date(target).getTime();
+    const update = () => {
+      const diff = Math.max(0, targetDate - Date.now());
+      const d = Math.floor(diff / 86400000);
+      const h = Math.floor((diff % 86400000) / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      const s = Math.floor((diff % 60000) / 1000);
+      const dEl = document.getElementById('countdown-days');
+      const hEl = document.getElementById('countdown-hours');
+      const mEl = document.getElementById('countdown-minutes');
+      const sEl = document.getElementById('countdown-seconds');
+      if (dEl) dEl.textContent = String(d).padStart(2, '0');
+      if (hEl) hEl.textContent = String(h).padStart(2, '0');
+      if (mEl) mEl.textContent = String(m).padStart(2, '0');
+      if (sEl) sEl.textContent = String(s).padStart(2, '0');
+    };
+    update();
+    setInterval(update, 1000);
+  }
+</script>

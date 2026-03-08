@@ -1,0 +1,41 @@
+label: FAQ
+icon: help
+tags:
+  - Content
+
+value:
+  _name: global/faq
+  heading: "Frequently Asked Questions"
+  subheading: "Find answers to common questions."
+  items:
+    - question: "How do I get started?"
+      answer: "Sign up for a free account and follow our quick start guide."
+    - question: "Can I cancel anytime?"
+      answer: "Yes, you can cancel your subscription at any time with no penalties."
+    - question: "Is there a free trial?"
+      answer: "We offer a 14-day free trial on all plans."
+
+preview:
+  text:
+    - key: heading
+  icon: help
+
+_inputs:
+  heading:
+    type: text
+  subheading:
+    type: textarea
+
+_structures:
+  items:
+    values:
+      - label: FAQ Item
+        icon: help_outline
+        value:
+          question: "Question goes here?"
+          answer: "Answer goes here."
+        _inputs:
+          question:
+            type: text
+          answer:
+            type: textarea

@@ -1,0 +1,31 @@
+---
+import themeData from '../../../data/theme.json';
+
+interface Props {
+  background?: 'white' | 'light' | 'dark' | 'primary';
+  class?: string;
+}
+
+const { background = 'white', class: className = '' } = Astro.props;
+
+const spacing = themeData.spacing_preset || 'default';
+
+const spacingClasses: Record<string, string> = {
+  compact: 'py-12 md:py-16',
+  default: 'py-16 md:py-24',
+  spacious: 'py-24 md:py-32',
+};
+
+const bgClasses: Record<string, string> = {
+  white: 'bg-surface',
+  light: 'bg-surface-alt',
+  dark: 'bg-secondary text-white',
+  primary: 'bg-primary text-white',
+};
+---
+
+<section class:list={[spacingClasses[spacing], bgClasses[background], className]}>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <slot />
+  </div>
+</section>

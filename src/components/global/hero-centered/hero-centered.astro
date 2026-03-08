@@ -1,0 +1,47 @@
+---
+import SectionWrapper from '../../shared/SectionWrapper.astro';
+import Button from '../../shared/Button.astro';
+
+interface Props {
+  _name?: string;
+  heading?: string;
+  subheading?: string;
+  badge?: string;
+  primary_button?: { text: string; link: string };
+  secondary_button?: { text: string; link: string };
+  show_secondary_button?: boolean;
+}
+
+const {
+  heading = 'Everything You Need in One Place',
+  subheading = 'Powerful features to help you manage and grow your business.',
+  badge = '',
+  primary_button = { text: 'Get Started', link: '#' },
+  secondary_button = { text: 'Learn More', link: '#' },
+  show_secondary_button = true,
+} = Astro.props;
+---
+
+<SectionWrapper>
+  <div class="mx-auto max-w-3xl text-center">
+    {badge && (
+      <span class="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary mb-6">
+        {badge}
+      </span>
+    )}
+    <h1 class="text-4xl font-bold tracking-tight text-secondary sm:text-5xl lg:text-6xl">
+      {heading}
+    </h1>
+    <p class="mt-6 text-lg text-text-muted leading-relaxed">
+      {subheading}
+    </p>
+    <div class="mt-8 flex flex-wrap justify-center gap-4">
+      {primary_button && (
+        <Button text={primary_button.text} link={primary_button.link} variant="primary" size="lg" />
+      )}
+      {show_secondary_button && secondary_button && (
+        <Button text={secondary_button.text} link={secondary_button.link} variant="outline" size="lg" />
+      )}
+    </div>
+  </div>
+</SectionWrapper>

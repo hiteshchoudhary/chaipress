@@ -1,0 +1,24 @@
+label: Countdown
+icon: timer
+tags:
+  - CTA
+
+value:
+  _name: global/countdown
+  heading: "Event Starts In"
+  subheading: "Don't miss out — register today."
+  target_date: "2026-04-15T09:00:00"
+
+preview:
+  text:
+    - key: heading
+  icon: timer
+
+_inputs:
+  heading:
+    type: text
+  subheading:
+    type: textarea
+  target_date:
+    type: datetime
+    comment: Date and time the countdown targets

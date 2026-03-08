@@ -1,0 +1,16 @@
+{
+  "logo": "/images/logos/logo.svg",
+  "logo_alt": "Chaipress",
+  "nav_items": [
+    { "text": "Features", "link": "/#features" },
+    { "text": "Pricing", "link": "/pricing/" },
+    { "text": "Blog", "link": "/blog/" },
+    { "text": "Docs", "link": "/docs/" },
+    { "text": "About", "link": "/about/" }
+  ],
+  "enable_nav_cta": true,
+  "nav_cta": {
+    "text": "Get Started",
+    "link": "#"
+  }
+}

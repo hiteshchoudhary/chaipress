@@ -1,0 +1,7 @@
+{
+  "site_title": "Chaipress",
+  "description": "A modern page publishing system built with Astro and CloudCannon.",
+  "favicon": "/favicon.svg",
+  "twitter_site": "@chaipress",
+  "default_og_image": "/images/og/default.jpg"
+}

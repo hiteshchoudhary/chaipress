@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Minimal postbuild — no @bookshop/generate needed with Editable Regions
+# Add Pagefind here later if search is needed:
+# npx pagefind --site dist

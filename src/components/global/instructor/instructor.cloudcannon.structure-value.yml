@@ -1,0 +1,36 @@
+label: Instructor
+icon: person
+tags:
+  - Course
+
+value:
+  _name: global/instructor
+  heading: "Your Instructor"
+  name: "Dr. Sarah Mitchell"
+  role: "Senior Product Strategist"
+  photo: /images/team/instructor.jpg
+  bio: "With over 15 years of experience in product management and digital strategy, Sarah has helped hundreds of companies launch successful products."
+  credentials:
+    - "MBA, Stanford University"
+    - "15+ years industry experience"
+    - "Former VP at TechCorp"
+  social: []
+
+preview:
+  text:
+    - key: name
+  icon: person
+
+_inputs:
+  heading:
+    type: text
+  name:
+    type: text
+  role:
+    type: text
+  photo:
+    type: image
+  bio:
+    type: textarea
+  credentials:
+    type: array

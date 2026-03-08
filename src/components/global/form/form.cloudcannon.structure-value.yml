@@ -1,0 +1,67 @@
+label: Form
+icon: dynamic_form
+tags:
+  - Form
+
+value:
+  _name: global/form
+  heading: "Register Now"
+  subheading: "Fill out the form to secure your spot."
+  submit_text: "Register"
+  success_message: "Thank you for registering!"
+  fields:
+    - label: "Full Name"
+      type: "text"
+      required: true
+      placeholder: "John Doe"
+    - label: "Email"
+      type: "email"
+      required: true
+      placeholder: "john@example.com"
+    - label: "Company"
+      type: "text"
+      required: false
+      placeholder: "Your company"
+
+preview:
+  text:
+    - key: heading
+  icon: dynamic_form
+
+_inputs:
+  heading:
+    type: text
+  subheading:
+    type: textarea
+  submit_text:
+    type: text
+  success_message:
+    type: text
+
+_structures:
+  fields:
+    values:
+      - label: Form Field
+        icon: input
+        value:
+          label: "Field Label"
+          type: "text"
+          required: false
+          placeholder: ""
+        _inputs:
+          label:
+            type: text
+          type:
+            type: select
+            options:
+              values:
+                - text
+                - email
+                - tel
+                - url
+                - number
+                - textarea
+          required:
+            type: switch
+          placeholder:
+            type: text

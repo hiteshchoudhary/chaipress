@@ -1,0 +1,43 @@
+---
+import SectionWrapper from '../../shared/SectionWrapper.astro';
+
+interface Stat {
+  value: string;
+  label: string;
+}
+
+interface Props {
+  _name?: string;
+  heading?: string;
+  subheading?: string;
+  stats?: Stat[];
+}
+
+const {
+  heading = 'By the Numbers',
+  subheading = '',
+  stats = [
+    { value: '10K+', label: 'Active Users' },
+    { value: '99.9%', label: 'Uptime' },
+    { value: '150+', label: 'Countries' },
+    { value: '24/7', label: 'Support' },
+  ],
+} = Astro.props;
+---
+
+<SectionWrapper background="dark">
+  {heading && (
+    <div class="mx-auto max-w-3xl text-center mb-12">
+      <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">{heading}</h2>
+      {subheading && <p class="mt-4 text-lg opacity-80">{subheading}</p>}
+    </div>
+  )}
+  <div class="grid grid-cols-2 gap-8 md:grid-cols-4">
+    {stats.map((stat) => (
+      <div class="text-center">
+        <p class="text-4xl font-bold text-accent">{stat.value}</p>
+        <p class="mt-2 text-sm uppercase tracking-wider opacity-80">{stat.label}</p>
+      </div>
+    ))}
+  </div>
+</SectionWrapper>

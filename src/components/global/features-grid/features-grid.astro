@@ -1,0 +1,46 @@
+---
+import SectionWrapper from '../../shared/SectionWrapper.astro';
+
+interface Feature {
+  icon?: string;
+  title: string;
+  description: string;
+}
+
+interface Props {
+  _name?: string;
+  heading?: string;
+  subheading?: string;
+  features?: Feature[];
+}
+
+const {
+  heading = 'Powerful Features',
+  subheading = 'Everything you need to build and scale.',
+  features = [
+    { icon: '⚡', title: 'Lightning Fast', description: 'Built for speed with optimized performance.' },
+    { icon: '🔒', title: 'Secure by Default', description: 'Enterprise-grade security out of the box.' },
+    { icon: '📊', title: 'Analytics', description: 'Detailed insights and reporting.' },
+  ],
+} = Astro.props;
+---
+
+<SectionWrapper background="light">
+  <div class="mx-auto max-w-3xl text-center">
+    <h2 class="text-3xl font-bold tracking-tight text-secondary sm:text-4xl">
+      {heading}
+    </h2>
+    <p class="mt-4 text-lg text-text-muted">{subheading}</p>
+  </div>
+  <div class="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+    {features.map((feature) => (
+      <div class="rounded-[var(--radius-theme)] bg-surface p-8 shadow-sm border border-border hover:shadow-md transition-shadow">
+        {feature.icon && (
+          <span class="text-3xl">{feature.icon}</span>
+        )}
+        <h3 class="mt-4 text-lg font-semibold text-secondary">{feature.title}</h3>
+        <p class="mt-2 text-text-muted">{feature.description}</p>
+      </div>
+    ))}
+  </div>
+</SectionWrapper>

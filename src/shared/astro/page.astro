@@ -1,0 +1,73 @@
+---
+/**
+ * Content blocks loop — maps each block's `_name` to the matching Astro component
+ * and renders them in sequence. Wraps with editable-region attributes for CloudCannon.
+ */
+
+// Import all section components
+import Hero from '../../components/global/hero/hero.astro';
+import HeroCentered from '../../components/global/hero-centered/hero-centered.astro';
+import FeaturesGrid from '../../components/global/features-grid/features-grid.astro';
+import FeaturesAlternating from '../../components/global/features-alternating/features-alternating.astro';
+import Testimonials from '../../components/global/testimonials/testimonials.astro';
+import PricingTable from '../../components/global/pricing-table/pricing-table.astro';
+import Faq from '../../components/global/faq/faq.astro';
+import Cta from '../../components/global/cta/cta.astro';
+import CtaSplit from '../../components/global/cta-split/cta-split.astro';
+import LogoCloud from '../../components/global/logo-cloud/logo-cloud.astro';
+import TeamGrid from '../../components/global/team-grid/team-grid.astro';
+import Stats from '../../components/global/stats/stats.astro';
+import ContentBlock from '../../components/global/content-block/content-block.astro';
+import ImageText from '../../components/global/image-text/image-text.astro';
+import VideoEmbed from '../../components/global/video-embed/video-embed.astro';
+import SectionHeader from '../../components/global/section-header/section-header.astro';
+import Form from '../../components/global/form/form.astro';
+import Countdown from '../../components/global/countdown/countdown.astro';
+import Curriculum from '../../components/global/curriculum/curriculum.astro';
+import Instructor from '../../components/global/instructor/instructor.astro';
+import DocsGrid from '../../components/global/docs-grid/docs-grid.astro';
+
+interface Props {
+  content_blocks: any[];
+}
+
+const { content_blocks = [] } = Astro.props;
+
+const componentMap: Record<string, any> = {
+  'global/hero': Hero,
+  'global/hero-centered': HeroCentered,
+  'global/features-grid': FeaturesGrid,
+  'global/features-alternating': FeaturesAlternating,
+  'global/testimonials': Testimonials,
+  'global/pricing-table': PricingTable,
+  'global/faq': Faq,
+  'global/cta': Cta,
+  'global/cta-split': CtaSplit,
+  'global/logo-cloud': LogoCloud,
+  'global/team-grid': TeamGrid,
+  'global/stats': Stats,
+  'global/content-block': ContentBlock,
+  'global/image-text': ImageText,
+  'global/video-embed': VideoEmbed,
+  'global/section-header': SectionHeader,
+  'global/form': Form,
+  'global/countdown': Countdown,
+  'global/curriculum': Curriculum,
+  'global/instructor': Instructor,
+  'global/docs-grid': DocsGrid,
+};
+---
+
+<div data-editable="array" data-prop="content_blocks">
+  {content_blocks.map((block: any, index: number) => {
+    const Component = componentMap[block._name];
+    if (!Component) return null;
+    return (
+      <div data-editable="array-item" data-index={index}>
+        <div data-editable="component" data-name={block._name}>
+          <Component {...block} />
+        </div>
+      </div>
+    );
+  })}
+</div>

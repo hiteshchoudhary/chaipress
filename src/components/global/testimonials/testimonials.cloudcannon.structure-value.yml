@@ -1,0 +1,60 @@
+label: Testimonials
+icon: format_quote
+tags:
+  - Social Proof
+
+value:
+  _name: global/testimonials
+  heading: "What Our Customers Say"
+  subheading: "Trusted by thousands of teams worldwide."
+  testimonials:
+    - author: "Sarah Chen"
+      role: "CEO at TechCo"
+      avatar: /images/testimonials/avatar-1.jpg
+      quote: "This platform transformed how we work."
+      rating: 5
+    - author: "James Wilson"
+      role: "CTO at StartupX"
+      avatar: /images/testimonials/avatar-2.jpg
+      quote: "The best tool we have ever used."
+      rating: 5
+    - author: "Maria Garcia"
+      role: "Designer at DesignStudio"
+      avatar: /images/testimonials/avatar-3.jpg
+      quote: "Intuitive and powerful — a rare combo."
+      rating: 5
+
+preview:
+  text:
+    - key: heading
+  icon: format_quote
+
+_inputs:
+  heading:
+    type: text
+  subheading:
+    type: textarea
+
+_structures:
+  testimonials:
+    values:
+      - label: Testimonial
+        icon: person
+        value:
+          author: "Name"
+          role: "Role at Company"
+          avatar: ""
+          quote: "Testimonial quote goes here."
+          rating: 5
+        _inputs:
+          author:
+            type: text
+          role:
+            type: text
+          avatar:
+            type: image
+          quote:
+            type: textarea
+          rating:
+            type: number
+            comment: Rating from 1-5

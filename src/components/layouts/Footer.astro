@@ -1,0 +1,60 @@
+---
+import footerData from '../../../data/footer.json';
+import socialData from '../../../data/social.json';
+
+interface FooterLink {
+  text: string;
+  link: string;
+}
+
+interface FooterSection {
+  title: string;
+  links: FooterLink[];
+}
+---
+
+<footer class="border-t border-border bg-secondary text-white">
+  <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+    <div class="grid grid-cols-2 gap-8 md:grid-cols-4">
+      <div class="col-span-2 md:col-span-1">
+        {footerData.logo ? (
+          <img src={footerData.logo} alt={footerData.logo_alt || 'Logo'} class="mb-4 h-8 brightness-0 invert" />
+        ) : (
+          <span class="mb-4 block text-xl font-bold font-heading">{footerData.logo_alt || 'Chaipress'}</span>
+        )}
+        <div class="mt-4 flex gap-4">
+          {socialData.social.map((s: { platform: string; url: string; icon: string }) => (
+            <a
+              href={s.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-gray-400 hover:text-white transition-colors"
+              aria-label={s.platform}
+            >
+              <span class="text-sm">{s.platform}</span>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      {(footerData.sections as FooterSection[]).map((section) => (
+        <div>
+          <h3 class="mb-4 text-sm font-semibold uppercase tracking-wider text-gray-400">{section.title}</h3>
+          <ul class="space-y-3">
+            {section.links.map((link) => (
+              <li>
+                <a href={link.link} class="text-sm text-gray-300 hover:text-white transition-colors">
+                  {link.text}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-12 border-t border-gray-700 pt-8 text-center text-sm text-gray-400">
+      <p>&copy; {footerData.copyright}</p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,62 @@
+---
+import { SEO } from 'astro-seo';
+import siteData from '../../data/site.json';
+import Navigation from '../components/layouts/Navigation.astro';
+import Footer from '../components/layouts/Footer.astro';
+import ThemeInjector from '../components/shared/ThemeInjector.astro';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  seo?: {
+    page_description?: string;
+    canonical_url?: string;
+    featured_image?: string;
+    open_graph_type?: string;
+    no_index?: boolean;
+  };
+}
+
+const { title, seo = {} } = Astro.props;
+const pageTitle = title ? `${title} | ${siteData.site_title}` : siteData.site_title;
+const description = seo.page_description || siteData.description;
+const ogImage = seo.featured_image || siteData.default_og_image;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href={siteData.favicon} />
+    <ThemeInjector />
+    <SEO
+      title={pageTitle}
+      description={description}
+      canonical={seo.canonical_url}
+      noindex={seo.no_index || false}
+      openGraph={{
+        basic: {
+          title: pageTitle,
+          type: (seo.open_graph_type as any) || 'website',
+          image: ogImage || '',
+        },
+        optional: {
+          description: description,
+          siteName: siteData.site_title,
+        },
+      }}
+      twitter={{
+        card: 'summary_large_image',
+        site: siteData.twitter_site,
+      }}
+    />
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <Navigation />
+    <main class="flex-1">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

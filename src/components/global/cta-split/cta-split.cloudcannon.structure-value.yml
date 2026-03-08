@@ -1,0 +1,31 @@
+label: CTA Split
+icon: call_split
+tags:
+  - CTA
+
+value:
+  _name: global/cta-split
+  heading: "Take the Next Step"
+  content: "Start building something amazing today. No credit card required."
+  image: /images/hero/cta-image.jpg
+  image_alt: "CTA image"
+  button:
+    text: "Get Started Free"
+    link: "#"
+
+preview:
+  text:
+    - key: heading
+  image:
+    - key: image
+  icon: call_split
+
+_inputs:
+  heading:
+    type: text
+  content:
+    type: textarea
+  image:
+    type: image
+  image_alt:
+    type: text

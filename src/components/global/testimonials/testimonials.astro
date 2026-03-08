@@ -1,0 +1,58 @@
+---
+import SectionWrapper from '../../shared/SectionWrapper.astro';
+
+interface Testimonial {
+  author: string;
+  role: string;
+  avatar?: string;
+  quote: string;
+  rating?: number;
+}
+
+interface Props {
+  _name?: string;
+  heading?: string;
+  subheading?: string;
+  testimonials?: Testimonial[];
+}
+
+const {
+  heading = 'What Our Customers Say',
+  subheading = 'Trusted by thousands of teams worldwide.',
+  testimonials = [
+    { author: 'Sarah Chen', role: 'CEO at TechCo', avatar: '/images/testimonials/avatar-1.jpg', quote: 'This platform transformed how we work.', rating: 5 },
+    { author: 'James Wilson', role: 'CTO at StartupX', avatar: '/images/testimonials/avatar-2.jpg', quote: 'The best tool we have ever used.', rating: 5 },
+    { author: 'Maria Garcia', role: 'Designer at DesignStudio', avatar: '/images/testimonials/avatar-3.jpg', quote: 'Intuitive and powerful — a rare combo.', rating: 5 },
+  ],
+} = Astro.props;
+---
+
+<SectionWrapper>
+  <div class="mx-auto max-w-3xl text-center">
+    <h2 class="text-3xl font-bold tracking-tight text-secondary sm:text-4xl">{heading}</h2>
+    <p class="mt-4 text-lg text-text-muted">{subheading}</p>
+  </div>
+  <div class="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+    {testimonials.map((t) => (
+      <div class="rounded-[var(--radius-theme)] border border-border bg-surface p-8">
+        {t.rating && (
+          <div class="mb-4 flex gap-1 text-accent">
+            {Array.from({ length: t.rating }).map(() => (
+              <svg class="h-5 w-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+            ))}
+          </div>
+        )}
+        <blockquote class="text-text-muted leading-relaxed">"{t.quote}"</blockquote>
+        <div class="mt-6 flex items-center gap-3">
+          {t.avatar && (
+            <img src={t.avatar} alt={t.author} class="h-10 w-10 rounded-full object-cover" loading="lazy" />
+          )}
+          <div>
+            <p class="font-semibold text-secondary">{t.author}</p>
+            <p class="text-sm text-text-muted">{t.role}</p>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</SectionWrapper>

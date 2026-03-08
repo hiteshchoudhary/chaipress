@@ -1,0 +1,31 @@
+label: Video Embed
+icon: play_circle
+tags:
+  - Media
+
+value:
+  _name: global/video-embed
+  heading: ""
+  subheading: ""
+  video_url: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+  aspect_ratio: "16:9"
+
+preview:
+  text:
+    - key: heading
+  icon: play_circle
+
+_inputs:
+  heading:
+    type: text
+  subheading:
+    type: textarea
+  video_url:
+    type: url
+    comment: YouTube or Vimeo embed URL
+  aspect_ratio:
+    type: select
+    options:
+      values:
+        - "16:9"
+        - "4:3"

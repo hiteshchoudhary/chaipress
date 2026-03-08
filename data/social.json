@@ -1,0 +1,7 @@
+{
+  "social": [
+    { "platform": "Twitter", "url": "https://twitter.com/chaipress", "icon": "twitter" },
+    { "platform": "GitHub", "url": "https://github.com/chaipress", "icon": "github" },
+    { "platform": "LinkedIn", "url": "https://linkedin.com/company/chaipress", "icon": "linkedin" }
+  ]
+}

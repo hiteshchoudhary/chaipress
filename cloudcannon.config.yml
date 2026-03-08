@@ -1,0 +1,234 @@
+source: ''
+timezone: Etc/UTC
+
+paths:
+  uploads: public/images
+  data: data
+
+collections_config:
+  pages:
+    path: src/content/pages
+    icon: wysiwyg
+    url: /[slug]/
+    output: true
+    _enabled_editors:
+      - visual
+      - data
+    add_options:
+      - name: Blank Page
+        schema: default
+      - name: SaaS Landing Page
+        schema: saas_landing
+      - name: Course Sales Page
+        schema: course_sales
+      - name: Docs Homepage
+        schema: docs_homepage
+      - name: Webinar Registration
+        schema: webinar_registration
+      - name: About / Team Page
+        schema: about_team
+      - name: Pricing Page
+        schema: pricing
+    schemas:
+      default:
+        path: .cloudcannon/schemas/page.md
+      saas_landing:
+        path: .cloudcannon/schemas/saas-landing.md
+      course_sales:
+        path: .cloudcannon/schemas/course-sales.md
+      docs_homepage:
+        path: .cloudcannon/schemas/docs-homepage.md
+      webinar_registration:
+        path: .cloudcannon/schemas/webinar-registration.md
+      about_team:
+        path: .cloudcannon/schemas/about-team.md
+      pricing:
+        path: .cloudcannon/schemas/pricing.md
+  posts:
+    path: src/content/posts
+    icon: post_add
+    url: /blog/[slug]/
+    output: true
+    _enabled_editors:
+      - content
+      - data
+    add_options:
+      - name: Blog Post
+        schema: post
+    schemas:
+      post:
+        path: .cloudcannon/schemas/post.md
+    sort:
+      key: date
+      order: desc
+    _inputs:
+      title:
+        type: text
+      description:
+        type: textarea
+        comment: Brief summary shown in blog listing and meta description (150-160 chars)
+      author:
+        type: text
+      date:
+        type: date
+      image:
+        type: image
+      image_alt:
+        type: text
+        comment: Descriptive text for accessibility
+      tags:
+        type: multiselect
+        options:
+          values:
+            - Getting Started
+            - Tutorial
+            - Design
+            - Marketing
+            - SEO
+            - Performance
+            - Features
+            - Announcement
+            - Course
+            - Conversion
+      draft:
+        type: switch
+        comment: Draft posts are hidden from the blog listing
+  data:
+    path: data
+    icon: settings
+    disable_url: true
+    disable_add: true
+
+collection_groups:
+  - heading: Pages
+    collections:
+      - pages
+  - heading: Blog
+    collections:
+      - posts
+  - heading: Site Settings
+    collections:
+      - data
+
+_inputs:
+  content_blocks:
+    type: array
+    comment: Add, remove, and reorder page sections
+    options:
+      structures: _structures.content_blocks
+  title:
+    type: text
+  seo:
+    type: object
+    comment: Search engine optimization settings
+  page_description:
+    type: textarea
+    comment: Meta description for search engines (150-160 chars ideal)
+  canonical_url:
+    type: url
+  featured_image:
+    type: image
+  open_graph_type:
+    type: select
+    options:
+      values:
+        - website
+        - article
+  no_index:
+    type: switch
+    comment: Prevent search engines from indexing this page
+  primary_color:
+    type: color
+  secondary_color:
+    type: color
+  accent_color:
+    type: color
+  font_heading:
+    type: select
+    options:
+      values:
+        - Inter
+        - Space Grotesk
+        - DM Sans
+        - Sora
+  font_body:
+    type: select
+    options:
+      values:
+        - Inter
+        - Space Grotesk
+        - DM Sans
+        - Sora
+  border_radius:
+    type: select
+    options:
+      values:
+        - none
+        - small
+        - medium
+        - large
+        - full
+  spacing_preset:
+    type: select
+    options:
+      values:
+        - compact
+        - default
+        - spacious
+
+_structures:
+  content_blocks:
+    values_from_glob: /src/components/**/*.cloudcannon.structure-value.yml
+  social_links:
+    values:
+      - label: Social Link
+        icon: link
+        value:
+          platform: Twitter
+          url: ''
+          icon: twitter
+        _inputs:
+          platform:
+            type: text
+          url:
+            type: url
+          icon:
+            type: text
+  nav_items:
+    values:
+      - label: Nav Item
+        icon: link
+        value:
+          text: Link Text
+          link: /
+        _inputs:
+          text:
+            type: text
+          link:
+            type: url
+  footer_sections:
+    values:
+      - label: Footer Section
+        icon: view_list
+        value:
+          title: Section Title
+          links: []
+        _inputs:
+          title:
+            type: text
+  footer_links:
+    values:
+      - label: Footer Link
+        icon: link
+        value:
+          text: Link Text
+          link: /
+        _inputs:
+          text:
+            type: text
+          link:
+            type: url
+
+_editables: {}
+
+_select_data: {}

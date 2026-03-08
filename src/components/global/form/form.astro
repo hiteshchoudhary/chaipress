@@ -1,0 +1,73 @@
+---
+import SectionWrapper from '../../shared/SectionWrapper.astro';
+import Button from '../../shared/Button.astro';
+
+interface FormField {
+  label: string;
+  type: string;
+  required?: boolean;
+  placeholder?: string;
+}
+
+interface Props {
+  _name?: string;
+  heading?: string;
+  subheading?: string;
+  fields?: FormField[];
+  submit_text?: string;
+  success_message?: string;
+}
+
+const {
+  heading = 'Register Now',
+  subheading = 'Fill out the form to secure your spot.',
+  fields = [
+    { label: 'Full Name', type: 'text', required: true, placeholder: 'John Doe' },
+    { label: 'Email', type: 'email', required: true, placeholder: 'john@example.com' },
+    { label: 'Company', type: 'text', required: false, placeholder: 'Your company' },
+  ],
+  submit_text = 'Register',
+  success_message = 'Thank you for registering!',
+} = Astro.props;
+---
+
+<SectionWrapper background="light">
+  <div class="mx-auto max-w-lg">
+    <div class="text-center">
+      <h2 class="text-3xl font-bold tracking-tight text-secondary sm:text-4xl">{heading}</h2>
+      <p class="mt-4 text-lg text-text-muted">{subheading}</p>
+    </div>
+    <form class="mt-8 space-y-5" data-success-message={success_message}>
+      {fields.map((field) => (
+        <div>
+          <label class="mb-1.5 block text-sm font-medium text-secondary">
+            {field.label}{field.required && <span class="text-red-500 ml-0.5">*</span>}
+          </label>
+          {field.type === 'textarea' ? (
+            <textarea
+              name={field.label.toLowerCase().replace(/\s+/g, '_')}
+              placeholder={field.placeholder}
+              required={field.required}
+              rows={4}
+              class="w-full rounded-[var(--radius-theme)] border border-border px-4 py-3 text-text-base focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-colors"
+            />
+          ) : (
+            <input
+              type={field.type}
+              name={field.label.toLowerCase().replace(/\s+/g, '_')}
+              placeholder={field.placeholder}
+              required={field.required}
+              class="w-full rounded-[var(--radius-theme)] border border-border px-4 py-3 text-text-base focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-colors"
+            />
+          )}
+        </div>
+      ))}
+      <button
+        type="submit"
+        class="w-full rounded-[var(--radius-theme)] bg-primary px-6 py-3 text-base font-medium text-white hover:bg-primary-dark transition-colors"
+      >
+        {submit_text}
+      </button>
+    </form>
+  </div>
+</SectionWrapper>

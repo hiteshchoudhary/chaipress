@@ -1,0 +1,41 @@
+label: Image + Text
+icon: image
+tags:
+  - Content
+
+value:
+  _name: global/image-text
+  heading: "Why Choose Us"
+  content: "We provide the best solution for your business needs."
+  image: /images/features/image-text.jpg
+  image_alt: "Feature image"
+  image_position: right
+  button:
+    text: "Learn More"
+    link: "#"
+  show_button: true
+
+preview:
+  text:
+    - key: heading
+  image:
+    - key: image
+  icon: image
+
+_inputs:
+  heading:
+    type: text
+  content:
+    type: textarea
+  image:
+    type: image
+  image_alt:
+    type: text
+  image_position:
+    type: select
+    options:
+      values:
+        - left
+        - right
+  show_button:
+    type: switch

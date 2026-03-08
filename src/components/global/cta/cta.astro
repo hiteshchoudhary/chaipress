@@ -1,0 +1,38 @@
+---
+import SectionWrapper from '../../shared/SectionWrapper.astro';
+import Button from '../../shared/Button.astro';
+
+interface Props {
+  _name?: string;
+  heading?: string;
+  subheading?: string;
+  button?: { text: string; link: string };
+}
+
+const {
+  heading = 'Ready to Get Started?',
+  subheading = 'Join thousands of teams already using our platform.',
+  button = { text: 'Start Free Trial', link: '#' },
+} = Astro.props;
+---
+
+<SectionWrapper background="primary">
+  <div class="mx-auto max-w-3xl text-center">
+    <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">
+      {heading}
+    </h2>
+    <p class="mt-4 text-lg opacity-90">
+      {subheading}
+    </p>
+    {button && (
+      <div class="mt-8">
+        <a
+          href={button.link}
+          class="inline-flex items-center justify-center rounded-[var(--radius-theme)] bg-white px-8 py-4 text-lg font-medium text-primary hover:bg-gray-100 transition-colors"
+        >
+          {button.text}
+        </a>
+      </div>
+    )}
+  </div>
+</SectionWrapper>

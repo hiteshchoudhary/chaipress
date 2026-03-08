@@ -1,0 +1,30 @@
+{
+  "logo": "/images/logos/logo.svg",
+  "logo_alt": "Chaipress",
+  "copyright": "2026 Chaipress. All rights reserved.",
+  "sections": [
+    {
+      "title": "Product",
+      "links": [
+        { "text": "Features", "link": "/#features" },
+        { "text": "Pricing", "link": "/pricing/" },
+        { "text": "Docs", "link": "/docs/" }
+      ]
+    },
+    {
+      "title": "Company",
+      "links": [
+        { "text": "About", "link": "/about/" },
+        { "text": "Blog", "link": "#" },
+        { "text": "Careers", "link": "#" }
+      ]
+    },
+    {
+      "title": "Legal",
+      "links": [
+        { "text": "Privacy", "link": "#" },
+        { "text": "Terms", "link": "#" }
+      ]
+    }
+  ]
+}

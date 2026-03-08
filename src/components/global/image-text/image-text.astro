@@ -1,0 +1,42 @@
+---
+import SectionWrapper from '../../shared/SectionWrapper.astro';
+import Button from '../../shared/Button.astro';
+
+interface Props {
+  _name?: string;
+  heading?: string;
+  content?: string;
+  image?: string;
+  image_alt?: string;
+  image_position?: 'left' | 'right';
+  button?: { text: string; link: string };
+  show_button?: boolean;
+}
+
+const {
+  heading = 'Why Choose Us',
+  content = 'We provide the best solution for your business needs.',
+  image = '/images/features/image-text.jpg',
+  image_alt = 'Feature image',
+  image_position = 'right',
+  button = { text: 'Learn More', link: '#' },
+  show_button = true,
+} = Astro.props;
+---
+
+<SectionWrapper>
+  <div class="grid items-center gap-12 lg:grid-cols-2">
+    <div class={image_position === 'left' ? 'lg:order-2' : ''}>
+      <h2 class="text-3xl font-bold tracking-tight text-secondary sm:text-4xl">{heading}</h2>
+      <p class="mt-4 text-lg text-text-muted leading-relaxed">{content}</p>
+      {show_button && button && (
+        <div class="mt-6">
+          <Button text={button.text} link={button.link} variant="primary" />
+        </div>
+      )}
+    </div>
+    <div class={image_position === 'left' ? 'lg:order-1' : ''}>
+      <img src={image} alt={image_alt} class="w-full rounded-[var(--radius-theme)] shadow-lg" loading="lazy" />
+    </div>
+  </div>
+</SectionWrapper>

@@ -1,0 +1,23 @@
+label: CTA
+icon: campaign
+tags:
+  - CTA
+
+value:
+  _name: global/cta
+  heading: "Ready to Get Started?"
+  subheading: "Join thousands of teams already using our platform."
+  button:
+    text: "Start Free Trial"
+    link: "#"
+
+preview:
+  text:
+    - key: heading
+  icon: campaign
+
+_inputs:
+  heading:
+    type: text
+  subheading:
+    type: textarea

@@ -1,0 +1,50 @@
+label: Logo Cloud
+icon: business
+tags:
+  - Social Proof
+
+value:
+  _name: global/logo-cloud
+  heading: "Trusted by Leading Companies"
+  logos:
+    - image: /images/logos/logo-1.svg
+      alt: "Company 1"
+      link: "#"
+    - image: /images/logos/logo-2.svg
+      alt: "Company 2"
+      link: "#"
+    - image: /images/logos/logo-3.svg
+      alt: "Company 3"
+      link: "#"
+    - image: /images/logos/logo-4.svg
+      alt: "Company 4"
+      link: "#"
+    - image: /images/logos/logo-5.svg
+      alt: "Company 5"
+      link: "#"
+
+preview:
+  text:
+    - key: heading
+  icon: business
+
+_inputs:
+  heading:
+    type: text
+
+_structures:
+  logos:
+    values:
+      - label: Logo
+        icon: image
+        value:
+          image: ""
+          alt: "Company Name"
+          link: ""
+        _inputs:
+          image:
+            type: image
+          alt:
+            type: text
+          link:
+            type: url

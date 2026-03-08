@@ -1,0 +1,43 @@
+label: Stats
+icon: bar_chart
+tags:
+  - Social Proof
+
+value:
+  _name: global/stats
+  heading: "By the Numbers"
+  subheading: ""
+  stats:
+    - value: "10K+"
+      label: "Active Users"
+    - value: "99.9%"
+      label: "Uptime"
+    - value: "150+"
+      label: "Countries"
+    - value: "24/7"
+      label: "Support"
+
+preview:
+  text:
+    - key: heading
+  icon: bar_chart
+
+_inputs:
+  heading:
+    type: text
+  subheading:
+    type: textarea
+
+_structures:
+  stats:
+    values:
+      - label: Stat
+        icon: trending_up
+        value:
+          value: "0"
+          label: "Stat Label"
+        _inputs:
+          value:
+            type: text
+          label:
+            type: text

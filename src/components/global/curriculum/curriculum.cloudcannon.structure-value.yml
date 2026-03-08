@@ -1,0 +1,62 @@
+label: Curriculum
+icon: school
+tags:
+  - Course
+
+value:
+  _name: global/curriculum
+  heading: "Course Curriculum"
+  subheading: "What you will learn in this course."
+  modules:
+    - title: "Module 1: Getting Started"
+      description: "Foundation concepts and setup."
+      lessons:
+        - title: "Introduction"
+          duration: "5 min"
+        - title: "Setting Up Your Environment"
+          duration: "10 min"
+    - title: "Module 2: Core Concepts"
+      description: "Deep dive into the fundamentals."
+      lessons:
+        - title: "Key Principles"
+          duration: "15 min"
+        - title: "Hands-on Practice"
+          duration: "20 min"
+
+preview:
+  text:
+    - key: heading
+  icon: school
+
+_inputs:
+  heading:
+    type: text
+  subheading:
+    type: textarea
+
+_structures:
+  modules:
+    values:
+      - label: Module
+        icon: folder
+        value:
+          title: "Module Title"
+          description: ""
+          lessons: []
+        _inputs:
+          title:
+            type: text
+          description:
+            type: textarea
+  lessons:
+    values:
+      - label: Lesson
+        icon: play_circle
+        value:
+          title: "Lesson Title"
+          duration: "10 min"
+        _inputs:
+          title:
+            type: text
+          duration:
+            type: text

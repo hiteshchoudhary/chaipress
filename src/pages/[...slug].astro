@@ -1,0 +1,23 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import PageBlocks from '../shared/astro/page.astro';
+
+export async function getStaticPaths() {
+  const pages = await getCollection('pages');
+  return pages.map((page) => {
+    const slug = page.id === 'index' ? undefined : page.id;
+    return {
+      params: { slug },
+      props: { page },
+    };
+  });
+}
+
+const { page } = Astro.props;
+const { title, content_blocks = [], seo = {} } = page.data;
+---
+
+<Layout title={title} seo={seo}>
+  <PageBlocks content_blocks={content_blocks} />
+</Layout>

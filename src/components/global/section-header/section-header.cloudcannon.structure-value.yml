@@ -1,0 +1,27 @@
+label: Section Header
+icon: title
+tags:
+  - Layout
+
+value:
+  _name: global/section-header
+  heading: "Section Title"
+  subheading: "A brief description of this section."
+  alignment: center
+
+preview:
+  text:
+    - key: heading
+  icon: title
+
+_inputs:
+  heading:
+    type: text
+  subheading:
+    type: textarea
+  alignment:
+    type: select
+    options:
+      values:
+        - center
+        - left

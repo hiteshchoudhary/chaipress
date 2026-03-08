@@ -1,0 +1,42 @@
+---
+import SectionWrapper from '../../shared/SectionWrapper.astro';
+
+interface Props {
+  _name?: string;
+  heading?: string;
+  content?: string;
+  image?: string;
+  image_alt?: string;
+  image_position?: 'left' | 'right' | 'top' | 'none';
+}
+
+const {
+  heading = 'Our Story',
+  content = 'We started with a simple idea: make the web easier for everyone.',
+  image = '',
+  image_alt = '',
+  image_position = 'right',
+} = Astro.props;
+---
+
+<SectionWrapper>
+  {image && image_position !== 'none' && image_position !== 'top' ? (
+    <div class="grid items-center gap-12 lg:grid-cols-2">
+      <div class={image_position === 'right' ? '' : 'lg:order-2'}>
+        <h2 class="text-3xl font-bold tracking-tight text-secondary sm:text-4xl">{heading}</h2>
+        <div class="mt-6 text-lg text-text-muted leading-relaxed whitespace-pre-line">{content}</div>
+      </div>
+      <div class={image_position === 'right' ? '' : 'lg:order-1'}>
+        <img src={image} alt={image_alt || heading} class="w-full rounded-[var(--radius-theme)] shadow-lg" loading="lazy" />
+      </div>
+    </div>
+  ) : (
+    <div class="mx-auto max-w-3xl">
+      {image && image_position === 'top' && (
+        <img src={image} alt={image_alt || heading} class="mb-8 w-full rounded-[var(--radius-theme)] shadow-lg" loading="lazy" />
+      )}
+      <h2 class="text-3xl font-bold tracking-tight text-secondary sm:text-4xl">{heading}</h2>
+      <div class="mt-6 text-lg text-text-muted leading-relaxed whitespace-pre-line">{content}</div>
+    </div>
+  )}
+</SectionWrapper>

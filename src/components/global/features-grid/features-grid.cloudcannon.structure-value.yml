@@ -1,0 +1,48 @@
+label: Features Grid
+icon: grid_view
+tags:
+  - Features
+
+value:
+  _name: global/features-grid
+  heading: "Powerful Features"
+  subheading: "Everything you need to build and scale."
+  features:
+    - icon: "⚡"
+      title: "Lightning Fast"
+      description: "Built for speed with optimized performance."
+    - icon: "🔒"
+      title: "Secure by Default"
+      description: "Enterprise-grade security out of the box."
+    - icon: "📊"
+      title: "Analytics"
+      description: "Detailed insights and reporting."
+
+preview:
+  text:
+    - key: heading
+  icon: grid_view
+
+_inputs:
+  heading:
+    type: text
+  subheading:
+    type: textarea
+
+_structures:
+  features:
+    values:
+      - label: Feature
+        icon: star
+        value:
+          icon: "⭐"
+          title: "Feature Title"
+          description: "Feature description goes here."
+        _inputs:
+          icon:
+            type: text
+            comment: Emoji or icon code
+          title:
+            type: text
+          description:
+            type: textarea

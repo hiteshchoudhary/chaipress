@@ -1,0 +1,51 @@
+---
+import SectionWrapper from '../../shared/SectionWrapper.astro';
+
+interface Feature {
+  title: string;
+  description: string;
+  image: string;
+  image_alt?: string;
+}
+
+interface Props {
+  _name?: string;
+  heading?: string;
+  subheading?: string;
+  features?: Feature[];
+}
+
+const {
+  heading = 'How It Works',
+  subheading = 'Simple steps to get started.',
+  features = [
+    { title: 'Step One', description: 'Create your account in seconds.', image: '/images/features/step-1.jpg', image_alt: 'Step one' },
+    { title: 'Step Two', description: 'Configure your workspace.', image: '/images/features/step-2.jpg', image_alt: 'Step two' },
+  ],
+} = Astro.props;
+---
+
+<SectionWrapper>
+  <div class="mx-auto max-w-3xl text-center">
+    <h2 class="text-3xl font-bold tracking-tight text-secondary sm:text-4xl">{heading}</h2>
+    <p class="mt-4 text-lg text-text-muted">{subheading}</p>
+  </div>
+  <div class="mt-16 space-y-24">
+    {features.map((feature, i) => (
+      <div class:list={['grid items-center gap-12 lg:grid-cols-2', i % 2 === 1 && 'lg:direction-rtl']}>
+        <div class={i % 2 === 1 ? 'lg:order-2' : ''}>
+          <h3 class="text-2xl font-bold text-secondary">{feature.title}</h3>
+          <p class="mt-4 text-lg text-text-muted leading-relaxed">{feature.description}</p>
+        </div>
+        <div class={i % 2 === 1 ? 'lg:order-1' : ''}>
+          <img
+            src={feature.image}
+            alt={feature.image_alt || feature.title}
+            class="w-full rounded-[var(--radius-theme)] shadow-lg"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    ))}
+  </div>
+</SectionWrapper>

@@ -1,0 +1,9 @@
+{
+  "primary_color": "#4F46E5",
+  "secondary_color": "#0F172A",
+  "accent_color": "#F59E0B",
+  "font_heading": "Inter",
+  "font_body": "Inter",
+  "border_radius": "medium",
+  "spacing_preset": "default"
+}

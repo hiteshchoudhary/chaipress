@@ -1,0 +1,43 @@
+---
+import SectionWrapper from '../../shared/SectionWrapper.astro';
+
+interface Props {
+  _name?: string;
+  heading?: string;
+  subheading?: string;
+  video_url?: string;
+  aspect_ratio?: '16:9' | '4:3';
+}
+
+const {
+  heading = '',
+  subheading = '',
+  video_url = 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+  aspect_ratio = '16:9',
+} = Astro.props;
+---
+
+<SectionWrapper>
+  <div class="mx-auto max-w-4xl">
+    {heading && (
+      <div class="mb-8 text-center">
+        <h2 class="text-3xl font-bold tracking-tight text-secondary sm:text-4xl">{heading}</h2>
+        {subheading && <p class="mt-4 text-lg text-text-muted">{subheading}</p>}
+      </div>
+    )}
+    <div class:list={[
+      'relative overflow-hidden rounded-[var(--radius-theme)] shadow-lg',
+      aspect_ratio === '16:9' ? 'aspect-video' : 'aspect-[4/3]',
+    ]}>
+      <iframe
+        src={video_url}
+        class="absolute inset-0 h-full w-full"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+        loading="lazy"
+        title={heading || 'Video'}
+      ></iframe>
+    </div>
+  </div>
+</SectionWrapper>

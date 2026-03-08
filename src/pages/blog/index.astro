@@ -1,0 +1,62 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+const posts = (await getCollection('posts', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+
+<Layout title="Blog" seo={{ page_description: 'Articles, guides, and updates from the Chaipress team.' }}>
+  <section class="py-16 md:py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-3xl text-center mb-16">
+        <h1 class="text-4xl font-bold tracking-tight text-secondary sm:text-5xl">Blog</h1>
+        <p class="mt-4 text-lg text-text-muted">Articles, guides, and updates from the Chaipress team.</p>
+      </div>
+
+      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        {posts.map((post) => (
+          <a
+            href={`/blog/${post.id}/`}
+            class="group rounded-[var(--radius-theme)] border border-border bg-surface overflow-hidden hover:shadow-lg transition-shadow"
+          >
+            {post.data.image && (
+              <div class="aspect-video overflow-hidden">
+                <img
+                  src={post.data.image}
+                  alt={post.data.image_alt || post.data.title}
+                  class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  loading="lazy"
+                />
+              </div>
+            )}
+            <div class="p-6">
+              {post.data.tags.length > 0 && (
+                <div class="mb-3 flex flex-wrap gap-2">
+                  {post.data.tags.slice(0, 2).map((tag) => (
+                    <span class="rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
+              <h2 class="text-lg font-semibold text-secondary group-hover:text-primary transition-colors">
+                {post.data.title}
+              </h2>
+              {post.data.description && (
+                <p class="mt-2 text-sm text-text-muted line-clamp-2">{post.data.description}</p>
+              )}
+              <div class="mt-4 flex items-center gap-3 text-xs text-text-muted">
+                {post.data.author && <span>{post.data.author}</span>}
+                <span>&middot;</span>
+                <time datetime={post.data.date.toISOString()}>
+                  {post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
+                </time>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

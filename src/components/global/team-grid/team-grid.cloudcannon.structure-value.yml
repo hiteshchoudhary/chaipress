@@ -1,0 +1,69 @@
+label: Team Grid
+icon: groups
+tags:
+  - Team
+
+value:
+  _name: global/team-grid
+  heading: "Meet Our Team"
+  subheading: "The people behind the product."
+  members:
+    - name: "Alex Johnson"
+      role: "CEO & Founder"
+      photo: /images/team/member-1.jpg
+      bio: "Passionate about building great products."
+      social: []
+    - name: "Sam Lee"
+      role: "CTO"
+      photo: /images/team/member-2.jpg
+      bio: "Engineering leader with 15+ years experience."
+      social: []
+    - name: "Jordan Rivera"
+      role: "Head of Design"
+      photo: /images/team/member-3.jpg
+      bio: "Creating beautiful, functional interfaces."
+      social: []
+
+preview:
+  text:
+    - key: heading
+  icon: groups
+
+_inputs:
+  heading:
+    type: text
+  subheading:
+    type: textarea
+
+_structures:
+  members:
+    values:
+      - label: Team Member
+        icon: person
+        value:
+          name: "Name"
+          role: "Role"
+          photo: ""
+          bio: ""
+          social: []
+        _inputs:
+          name:
+            type: text
+          role:
+            type: text
+          photo:
+            type: image
+          bio:
+            type: textarea
+  social:
+    values:
+      - label: Social Link
+        icon: link
+        value:
+          platform: "Twitter"
+          url: ""
+        _inputs:
+          platform:
+            type: text
+          url:
+            type: url

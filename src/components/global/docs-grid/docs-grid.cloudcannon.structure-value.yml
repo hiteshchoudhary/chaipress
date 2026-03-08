@@ -1,0 +1,66 @@
+label: Docs Grid
+icon: menu_book
+tags:
+  - Docs
+
+value:
+  _name: global/docs-grid
+  heading: "Documentation"
+  subheading: "Find the information you need."
+  categories:
+    - title: "Getting Started"
+      icon: "🚀"
+      description: "Quick start guide and setup instructions."
+      link: "#"
+    - title: "API Reference"
+      icon: "📚"
+      description: "Comprehensive API documentation."
+      link: "#"
+    - title: "Tutorials"
+      icon: "🎓"
+      description: "Step-by-step guides and walkthroughs."
+      link: "#"
+    - title: "Examples"
+      icon: "💡"
+      description: "Sample projects and code examples."
+      link: "#"
+    - title: "Configuration"
+      icon: "⚙️"
+      description: "Configure and customize your setup."
+      link: "#"
+    - title: "FAQ"
+      icon: "❓"
+      description: "Common questions and answers."
+      link: "#"
+
+preview:
+  text:
+    - key: heading
+  icon: menu_book
+
+_inputs:
+  heading:
+    type: text
+  subheading:
+    type: textarea
+
+_structures:
+  categories:
+    values:
+      - label: Category
+        icon: folder
+        value:
+          title: "Category Title"
+          icon: "📄"
+          description: "Category description."
+          link: "#"
+        _inputs:
+          title:
+            type: text
+          icon:
+            type: text
+            comment: Emoji icon
+          description:
+            type: textarea
+          link:
+            type: url

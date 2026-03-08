@@ -1,0 +1,32 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+
+@theme {
+  --color-primary: var(--theme-primary, #4F46E5);
+  --color-primary-light: var(--theme-primary-light, #818CF8);
+  --color-primary-dark: var(--theme-primary-dark, #3730A3);
+  --color-secondary: var(--theme-secondary, #0F172A);
+  --color-accent: var(--theme-accent, #F59E0B);
+  --color-surface: #ffffff;
+  --color-surface-alt: #F8FAFC;
+  --color-text-base: #1E293B;
+  --color-text-muted: #64748B;
+  --color-border: #E2E8F0;
+
+  --font-heading: var(--theme-font-heading, 'Inter', sans-serif);
+  --font-body: var(--theme-font-body, 'Inter', sans-serif);
+
+  --radius-theme: var(--theme-radius, 0.5rem);
+}
+
+@layer base {
+  body {
+    font-family: var(--font-body);
+    color: var(--color-text-base);
+    background-color: var(--color-surface);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+  }
+}

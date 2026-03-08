@@ -1,0 +1,49 @@
+label: Features Alternating
+icon: view_agenda
+tags:
+  - Features
+
+value:
+  _name: global/features-alternating
+  heading: "How It Works"
+  subheading: "Simple steps to get started."
+  features:
+    - title: "Step One"
+      description: "Create your account in seconds."
+      image: /images/features/step-1.jpg
+      image_alt: "Step one"
+    - title: "Step Two"
+      description: "Configure your workspace."
+      image: /images/features/step-2.jpg
+      image_alt: "Step two"
+
+preview:
+  text:
+    - key: heading
+  icon: view_agenda
+
+_inputs:
+  heading:
+    type: text
+  subheading:
+    type: textarea
+
+_structures:
+  features:
+    values:
+      - label: Feature
+        icon: image
+        value:
+          title: "Feature Title"
+          description: "Feature description goes here."
+          image: ""
+          image_alt: ""
+        _inputs:
+          title:
+            type: text
+          description:
+            type: textarea
+          image:
+            type: image
+          image_alt:
+            type: text

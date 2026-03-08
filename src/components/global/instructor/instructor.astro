@@ -1,0 +1,65 @@
+---
+import SectionWrapper from '../../shared/SectionWrapper.astro';
+
+interface Props {
+  _name?: string;
+  heading?: string;
+  name?: string;
+  role?: string;
+  photo?: string;
+  bio?: string;
+  credentials?: string[];
+  social?: { platform: string; url: string }[];
+}
+
+const {
+  heading = 'Your Instructor',
+  name = 'Dr. Sarah Mitchell',
+  role = 'Senior Product Strategist',
+  photo = '/images/team/instructor.jpg',
+  bio = 'With over 15 years of experience in product management and digital strategy, Sarah has helped hundreds of companies launch successful products.',
+  credentials = ['MBA, Stanford University', '15+ years industry experience', 'Former VP at TechCorp'],
+  social = [],
+} = Astro.props;
+---
+
+<SectionWrapper background="light">
+  <div class="mx-auto max-w-4xl">
+    {heading && (
+      <h2 class="mb-12 text-center text-3xl font-bold tracking-tight text-secondary sm:text-4xl">{heading}</h2>
+    )}
+    <div class="grid items-center gap-8 md:grid-cols-3">
+      <div class="text-center md:col-span-1">
+        {photo && (
+          <img src={photo} alt={name} class="mx-auto h-48 w-48 rounded-full object-cover shadow-lg" loading="lazy" />
+        )}
+      </div>
+      <div class="md:col-span-2">
+        <h3 class="text-2xl font-bold text-secondary">{name}</h3>
+        <p class="text-primary font-medium">{role}</p>
+        <p class="mt-4 text-text-muted leading-relaxed">{bio}</p>
+        {credentials && credentials.length > 0 && (
+          <ul class="mt-4 space-y-2">
+            {credentials.map((c) => (
+              <li class="flex items-center gap-2 text-sm text-text-muted">
+                <svg class="h-4 w-4 text-primary shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                {c}
+              </li>
+            ))}
+          </ul>
+        )}
+        {social && social.length > 0 && (
+          <div class="mt-4 flex gap-3">
+            {social.map((s) => (
+              <a href={s.url} target="_blank" rel="noopener noreferrer" class="text-text-muted hover:text-primary text-sm transition-colors">
+                {s.platform}
+              </a>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+</SectionWrapper>

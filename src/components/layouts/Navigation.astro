@@ -1,0 +1,65 @@
+---
+import navData from '../../../data/navigation.json';
+---
+
+<nav class="sticky top-0 z-50 border-b border-border bg-surface/95 backdrop-blur-sm">
+  <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+    <a href="/" class="flex items-center gap-2">
+      {navData.logo ? (
+        <img src={navData.logo} alt={navData.logo_alt || 'Logo'} class="h-8" />
+      ) : (
+        <span class="text-xl font-bold font-heading text-secondary">{navData.logo_alt || 'Chaipress'}</span>
+      )}
+    </a>
+
+    <div class="hidden items-center gap-8 md:flex">
+      {navData.nav_items.map((item: { text: string; link: string }) => (
+        <a href={item.link} class="text-sm font-medium text-text-muted hover:text-primary transition-colors">
+          {item.text}
+        </a>
+      ))}
+      {navData.enable_nav_cta && navData.nav_cta && (
+        <a
+          href={navData.nav_cta.link}
+          class="rounded-[var(--radius-theme)] bg-primary px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-dark transition-colors"
+        >
+          {navData.nav_cta.text}
+        </a>
+      )}
+    </div>
+
+    <button
+      id="mobile-menu-btn"
+      class="md:hidden rounded-[var(--radius-theme)] p-2 text-text-muted hover:bg-surface-alt"
+      aria-label="Toggle menu"
+    >
+      <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+
+  <div id="mobile-menu" class="hidden border-t border-border md:hidden">
+    <div class="space-y-1 px-4 py-4">
+      {navData.nav_items.map((item: { text: string; link: string }) => (
+        <a href={item.link} class="block rounded-[var(--radius-theme)] px-3 py-2 text-base text-text-muted hover:bg-surface-alt hover:text-primary">
+          {item.text}
+        </a>
+      ))}
+      {navData.enable_nav_cta && navData.nav_cta && (
+        <a
+          href={navData.nav_cta.link}
+          class="mt-2 block rounded-[var(--radius-theme)] bg-primary px-3 py-2.5 text-center text-sm font-medium text-white hover:bg-primary-dark"
+        >
+          {navData.nav_cta.text}
+        </a>
+      )}
+    </div>
+  </div>
+</nav>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  btn?.addEventListener('click', () => menu?.classList.toggle('hidden'));
+</script>

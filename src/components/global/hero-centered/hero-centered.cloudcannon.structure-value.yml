@@ -1,0 +1,33 @@
+label: Hero Centered
+icon: vertical_align_center
+tags:
+  - Hero
+
+value:
+  _name: global/hero-centered
+  heading: "Everything You Need in One Place"
+  subheading: "Powerful features to help you manage and grow your business."
+  badge: ""
+  primary_button:
+    text: "Get Started"
+    link: "#"
+  secondary_button:
+    text: "Learn More"
+    link: "#"
+  show_secondary_button: true
+
+preview:
+  text:
+    - key: heading
+  icon: vertical_align_center
+
+_inputs:
+  heading:
+    type: text
+  subheading:
+    type: textarea
+  badge:
+    type: text
+    comment: Optional badge text above heading
+  show_secondary_button:
+    type: switch

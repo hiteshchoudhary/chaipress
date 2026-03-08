@@ -1,0 +1,40 @@
+---
+import SectionWrapper from '../../shared/SectionWrapper.astro';
+import Button from '../../shared/Button.astro';
+
+interface Props {
+  _name?: string;
+  heading?: string;
+  content?: string;
+  image?: string;
+  image_alt?: string;
+  button?: { text: string; link: string };
+}
+
+const {
+  heading = 'Take the Next Step',
+  content = 'Start building something amazing today. No credit card required.',
+  image = '/images/hero/cta-image.jpg',
+  image_alt = 'CTA image',
+  button = { text: 'Get Started Free', link: '#' },
+} = Astro.props;
+---
+
+<SectionWrapper background="light">
+  <div class="grid items-center gap-12 lg:grid-cols-2">
+    <div>
+      <h2 class="text-3xl font-bold tracking-tight text-secondary sm:text-4xl">{heading}</h2>
+      <p class="mt-4 text-lg text-text-muted leading-relaxed">{content}</p>
+      {button && (
+        <div class="mt-6">
+          <Button text={button.text} link={button.link} variant="primary" size="lg" />
+        </div>
+      )}
+    </div>
+    {image && (
+      <div>
+        <img src={image} alt={image_alt} class="w-full rounded-[var(--radius-theme)] shadow-lg" loading="lazy" />
+      </div>
+    )}
+  </div>
+</SectionWrapper>

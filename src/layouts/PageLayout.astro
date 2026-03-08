@@ -1,0 +1,21 @@
+---
+import Layout from './Layout.astro';
+
+interface Props {
+  title: string;
+  seo?: {
+    page_description?: string;
+    canonical_url?: string;
+    featured_image?: string;
+    open_graph_type?: string;
+    no_index?: boolean;
+  };
+  content_blocks?: any[];
+}
+
+const { title, seo, content_blocks = [] } = Astro.props;
+---
+
+<Layout title={title} seo={seo}>
+  <slot />
+</Layout>
