@@ -33,16 +33,46 @@ const {
 
 <SectionWrapper>
   <div class="mx-auto max-w-3xl text-center">
-    <h2 data-cms-bind={_cms_bind && `${_cms_bind}.heading`} class="text-3xl font-bold tracking-tight text-secondary sm:text-4xl">{heading}</h2>
-    <p data-cms-bind={_cms_bind && `${_cms_bind}.subheading`} class="mt-4 text-lg text-text-muted">{subheading}</p>
+    <h2
+      data-cms-bind={_cms_bind && `${_cms_bind}.heading`}
+      data-editable="text"
+      data-prop="heading"
+      class="text-3xl font-bold tracking-tight text-secondary sm:text-4xl"
+    >
+      {heading}
+    </h2>
+    <p
+      data-cms-bind={_cms_bind && `${_cms_bind}.subheading`}
+      data-editable="text"
+      data-prop="subheading"
+      class="mt-4 text-lg text-text-muted"
+    >
+      {subheading}
+    </p>
   </div>
   <div class="mx-auto mt-12 max-w-3xl space-y-6">
     {modules.map((mod, mi) => (
       <details class="group rounded-[var(--radius-theme)] border border-border bg-surface" open={mi === 0}>
         <summary class="flex cursor-pointer items-center justify-between p-6">
           <div>
-            <h3 data-cms-bind={_cms_bind && `${_cms_bind}.modules.${mi}.title`} class="font-semibold text-secondary">{mod.title}</h3>
-            {mod.description && <p data-cms-bind={_cms_bind && `${_cms_bind}.modules.${mi}.description`} class="mt-1 text-sm text-text-muted">{mod.description}</p>}
+            <h3
+              data-cms-bind={_cms_bind && `${_cms_bind}.modules.${mi}.title`}
+              data-editable="text"
+              data-prop={`modules.${mi}.title`}
+              class="font-semibold text-secondary"
+            >
+              {mod.title}
+            </h3>
+            {mod.description && (
+              <p
+                data-cms-bind={_cms_bind && `${_cms_bind}.modules.${mi}.description`}
+                data-editable="text"
+                data-prop={`modules.${mi}.description`}
+                class="mt-1 text-sm text-text-muted"
+              >
+                {mod.description}
+              </p>
+            )}
           </div>
           <div class="flex items-center gap-3">
             <span class="text-sm text-text-muted">{mod.lessons.length} lessons</span>
@@ -59,7 +89,14 @@ const {
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                <span data-cms-bind={_cms_bind && `${_cms_bind}.modules.${mi}.lessons.${li}.title`} class="text-sm text-text-base">{lesson.title}</span>
+                <span
+                  data-cms-bind={_cms_bind && `${_cms_bind}.modules.${mi}.lessons.${li}.title`}
+                  data-editable="text"
+                  data-prop={`modules.${mi}.lessons.${li}.title`}
+                  class="text-sm text-text-base"
+                >
+                  {lesson.title}
+                </span>
               </div>
               {lesson.duration && <span class="text-xs text-text-muted">{lesson.duration}</span>}
             </div>

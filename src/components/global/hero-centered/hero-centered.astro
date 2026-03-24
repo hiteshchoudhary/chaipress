@@ -27,14 +27,29 @@ const {
 <SectionWrapper>
   <div class="mx-auto max-w-3xl text-center">
     {badge && (
-      <span data-cms-bind={_cms_bind && `${_cms_bind}.badge`} class="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary mb-6">
+      <span
+        data-cms-bind={_cms_bind && `${_cms_bind}.badge`}
+        data-editable="text"
+        data-prop="badge"
+        class="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary mb-6"
+      >
         {badge}
       </span>
     )}
-    <h1 data-cms-bind={_cms_bind && `${_cms_bind}.heading`} class="text-4xl font-bold tracking-tight text-secondary sm:text-5xl lg:text-6xl">
+    <h1
+      data-cms-bind={_cms_bind && `${_cms_bind}.heading`}
+      data-editable="text"
+      data-prop="heading"
+      class="text-4xl font-bold tracking-tight text-secondary sm:text-5xl lg:text-6xl"
+    >
       {heading}
     </h1>
-    <p data-cms-bind={_cms_bind && `${_cms_bind}.subheading`} class="mt-6 text-lg text-text-muted leading-relaxed">
+    <p
+      data-cms-bind={_cms_bind && `${_cms_bind}.subheading`}
+      data-editable="text"
+      data-prop="subheading"
+      class="mt-6 text-lg text-text-muted leading-relaxed"
+    >
       {subheading}
     </p>
     <div class="mt-8 flex flex-wrap justify-center gap-4">

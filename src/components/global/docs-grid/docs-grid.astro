@@ -33,15 +33,43 @@ const {
 
 <SectionWrapper>
   <div class="mx-auto max-w-3xl text-center">
-    <h2 data-cms-bind={_cms_bind && `${_cms_bind}.heading`} class="text-3xl font-bold tracking-tight text-secondary sm:text-4xl">{heading}</h2>
-    <p data-cms-bind={_cms_bind && `${_cms_bind}.subheading`} class="mt-4 text-lg text-text-muted">{subheading}</p>
+    <h2
+      data-cms-bind={_cms_bind && `${_cms_bind}.heading`}
+      data-editable="text"
+      data-prop="heading"
+      class="text-3xl font-bold tracking-tight text-secondary sm:text-4xl"
+    >
+      {heading}
+    </h2>
+    <p
+      data-cms-bind={_cms_bind && `${_cms_bind}.subheading`}
+      data-editable="text"
+      data-prop="subheading"
+      class="mt-4 text-lg text-text-muted"
+    >
+      {subheading}
+    </p>
   </div>
   <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
     {categories.map((cat, i) => (
       <a href={cat.link} class="group rounded-[var(--radius-theme)] border border-border bg-surface p-6 hover:border-primary hover:shadow-md transition-all">
         {cat.icon && <span class="text-2xl">{cat.icon}</span>}
-        <h3 data-cms-bind={_cms_bind && `${_cms_bind}.categories.${i}.title`} class="mt-3 font-semibold text-secondary group-hover:text-primary transition-colors">{cat.title}</h3>
-        <p data-cms-bind={_cms_bind && `${_cms_bind}.categories.${i}.description`} class="mt-2 text-sm text-text-muted">{cat.description}</p>
+        <h3
+          data-cms-bind={_cms_bind && `${_cms_bind}.categories.${i}.title`}
+          data-editable="text"
+          data-prop={`categories.${i}.title`}
+          class="mt-3 font-semibold text-secondary group-hover:text-primary transition-colors"
+        >
+          {cat.title}
+        </h3>
+        <p
+          data-cms-bind={_cms_bind && `${_cms_bind}.categories.${i}.description`}
+          data-editable="text"
+          data-prop={`categories.${i}.description`}
+          class="mt-2 text-sm text-text-muted"
+        >
+          {cat.description}
+        </p>
       </a>
     ))}
   </div>

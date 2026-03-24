@@ -29,10 +29,20 @@ const {
 <SectionWrapper>
   <div class="grid items-center gap-12 lg:grid-cols-2">
     <div>
-      <h1 data-cms-bind={_cms_bind && `${_cms_bind}.heading`} class="text-4xl font-bold tracking-tight text-secondary sm:text-5xl lg:text-6xl">
+      <h1
+        data-cms-bind={_cms_bind && `${_cms_bind}.heading`}
+        data-editable="text"
+        data-prop="heading"
+        class="text-4xl font-bold tracking-tight text-secondary sm:text-5xl lg:text-6xl"
+      >
         {heading}
       </h1>
-      <p data-cms-bind={_cms_bind && `${_cms_bind}.subheading`} class="mt-6 text-lg text-text-muted leading-relaxed">
+      <p
+        data-cms-bind={_cms_bind && `${_cms_bind}.subheading`}
+        data-editable="text"
+        data-prop="subheading"
+        class="mt-6 text-lg text-text-muted leading-relaxed"
+      >
         {subheading}
       </p>
       <div class="mt-8 flex flex-wrap gap-4">
@@ -48,6 +58,8 @@ const {
       <img
         src={image}
         alt={image_alt}
+        data-editable="image"
+        data-prop="image"
         class="w-full rounded-[var(--radius-theme)] shadow-xl"
         loading="eager"
       />

@@ -25,20 +25,62 @@ const {
   {image && image_position !== 'none' && image_position !== 'top' ? (
     <div class="grid items-center gap-12 lg:grid-cols-2">
       <div class={image_position === 'right' ? '' : 'lg:order-2'}>
-        <h2 data-cms-bind={_cms_bind && `${_cms_bind}.heading`} class="text-3xl font-bold tracking-tight text-secondary sm:text-4xl">{heading}</h2>
-        <div data-cms-bind={_cms_bind && `${_cms_bind}.content`} class="mt-6 text-lg text-text-muted leading-relaxed whitespace-pre-line">{content}</div>
+        <h2
+          data-cms-bind={_cms_bind && `${_cms_bind}.heading`}
+          data-editable="text"
+          data-prop="heading"
+          class="text-3xl font-bold tracking-tight text-secondary sm:text-4xl"
+        >
+          {heading}
+        </h2>
+        <div
+          data-cms-bind={_cms_bind && `${_cms_bind}.content`}
+          data-editable="text"
+          data-prop="content"
+          class="mt-6 text-lg text-text-muted leading-relaxed whitespace-pre-line"
+        >
+          {content}
+        </div>
       </div>
       <div class={image_position === 'right' ? '' : 'lg:order-1'}>
-        <img src={image} alt={image_alt || heading} class="w-full rounded-[var(--radius-theme)] shadow-lg" loading="lazy" />
+        <img
+          src={image}
+          alt={image_alt || heading}
+          data-editable="image"
+          data-prop="image"
+          class="w-full rounded-[var(--radius-theme)] shadow-lg"
+          loading="lazy"
+        />
       </div>
     </div>
   ) : (
     <div class="mx-auto max-w-3xl">
       {image && image_position === 'top' && (
-        <img src={image} alt={image_alt || heading} class="mb-8 w-full rounded-[var(--radius-theme)] shadow-lg" loading="lazy" />
+        <img
+          src={image}
+          alt={image_alt || heading}
+          data-editable="image"
+          data-prop="image"
+          class="mb-8 w-full rounded-[var(--radius-theme)] shadow-lg"
+          loading="lazy"
+        />
       )}
-      <h2 data-cms-bind={_cms_bind && `${_cms_bind}.heading`} class="text-3xl font-bold tracking-tight text-secondary sm:text-4xl">{heading}</h2>
-      <div data-cms-bind={_cms_bind && `${_cms_bind}.content`} class="mt-6 text-lg text-text-muted leading-relaxed whitespace-pre-line">{content}</div>
+      <h2
+        data-cms-bind={_cms_bind && `${_cms_bind}.heading`}
+        data-editable="text"
+        data-prop="heading"
+        class="text-3xl font-bold tracking-tight text-secondary sm:text-4xl"
+      >
+        {heading}
+      </h2>
+      <div
+        data-cms-bind={_cms_bind && `${_cms_bind}.content`}
+        data-editable="text"
+        data-prop="content"
+        class="mt-6 text-lg text-text-muted leading-relaxed whitespace-pre-line"
+      >
+        {content}
+      </div>
     </div>
   )}
 </SectionWrapper>
