@@ -44,7 +44,8 @@ const {
             src={feature.image}
             alt={feature.image_alt || feature.title}
             data-editable="image"
-            data-prop={`features.${i}.image`}
+            data-prop-src={`features.${i}.image`}
+            data-prop-alt={`features.${i}.image_alt`}
             class="w-full rounded-[var(--radius-theme)] shadow-lg"
             loading="lazy"
           />

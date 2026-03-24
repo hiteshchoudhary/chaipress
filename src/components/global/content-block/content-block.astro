@@ -29,7 +29,7 @@ const {
         <div data-editable="text" data-prop="content" class="mt-6 text-lg text-text-muted leading-relaxed whitespace-pre-line">{content}</div>
       </div>
       <div class={image_position === 'right' ? '' : 'lg:order-1'}>
-        <img src={image} alt={image_alt || heading} data-editable="image" data-prop="image" class="w-full rounded-[var(--radius-theme)] shadow-lg" loading="lazy" />
+        <img src={image} alt={image_alt || heading} data-editable="image" data-prop-src="image" data-prop-alt="image_alt" class="w-full rounded-[var(--radius-theme)] shadow-lg" loading="lazy" />
       </div>
     </div>
   ) : (

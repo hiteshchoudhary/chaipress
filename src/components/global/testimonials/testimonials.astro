@@ -47,7 +47,7 @@ const {
         <blockquote data-editable="text" data-prop={`testimonials.${i}.quote`} class="text-text-muted leading-relaxed">"{t.quote}"</blockquote>
         <div class="mt-6 flex items-center gap-3">
           {t.avatar && (
-            <img src={t.avatar} alt={t.author} data-editable="image" data-prop={`testimonials.${i}.avatar`} class="h-10 w-10 rounded-full object-cover" loading="lazy" />
+            <img src={t.avatar} alt={t.author} data-editable="image" data-prop-src={`testimonials.${i}.avatar`} class="h-10 w-10 rounded-full object-cover" loading="lazy" />
           )}
           <div>
             <p data-editable="text" data-prop={`testimonials.${i}.author`} class="font-semibold text-secondary">{t.author}</p>

@@ -33,7 +33,7 @@ const {
   )}
   <div class="flex flex-wrap items-center justify-center gap-8 md:gap-12">
     {logos.map((logo, i) => {
-      const img = <img src={logo.image} alt={logo.alt} data-editable="image" data-prop={`logos.${i}.image`} class="h-8 max-w-[120px] object-contain opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all" loading="lazy" />;
+      const img = <img src={logo.image} alt={logo.alt} data-editable="image" data-prop-src={`logos.${i}.image`} data-prop-alt={`logos.${i}.alt`} class="h-8 max-w-[120px] object-contain opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all" loading="lazy" />;
       return logo.link ? <a href={logo.link} target="_blank" rel="noopener noreferrer">{img}</a> : img;
     })}
   </div>
