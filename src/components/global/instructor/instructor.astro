@@ -28,16 +28,16 @@ const {
 <SectionWrapper background="light">
   <div class="mx-auto max-w-4xl">
     {heading && (
-      <h2 data-cms-bind={_cms_bind && `${_cms_bind}.heading`} class="mb-12 text-center text-3xl font-bold tracking-tight text-secondary sm:text-4xl">{heading}</h2>
+      <h2 data-editable="text" data-prop="heading" class="mb-12 text-center text-3xl font-bold tracking-tight text-secondary sm:text-4xl">{heading}</h2>
     )}
     <div class="grid items-center gap-8 md:grid-cols-3">
       <div class="text-center md:col-span-1">
-        {photo && <img src={photo} alt={name} class="mx-auto h-48 w-48 rounded-full object-cover shadow-lg" loading="lazy" />}
+        {photo && <img src={photo} alt={name} data-editable="image" data-prop="photo" class="mx-auto h-48 w-48 rounded-full object-cover shadow-lg" loading="lazy" />}
       </div>
       <div class="md:col-span-2">
-        <h3 data-cms-bind={_cms_bind && `${_cms_bind}.name`} class="text-2xl font-bold text-secondary">{name}</h3>
-        <p data-cms-bind={_cms_bind && `${_cms_bind}.role`} class="text-primary font-medium">{role}</p>
-        <p data-cms-bind={_cms_bind && `${_cms_bind}.bio`} class="mt-4 text-text-muted leading-relaxed">{bio}</p>
+        <h3 data-editable="text" data-prop="name" class="text-2xl font-bold text-secondary">{name}</h3>
+        <p data-editable="text" data-prop="role" class="text-primary font-medium">{role}</p>
+        <p data-editable="text" data-prop="bio" class="mt-4 text-text-muted leading-relaxed">{bio}</p>
         {credentials && credentials.length > 0 && (
           <ul class="mt-4 space-y-2">
             {credentials.map((c) => (

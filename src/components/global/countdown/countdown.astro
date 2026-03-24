@@ -19,8 +19,8 @@ const {
 
 <SectionWrapper background="primary">
   <div class="mx-auto max-w-3xl text-center">
-    <h2 data-cms-bind={_cms_bind && `${_cms_bind}.heading`} class="text-3xl font-bold tracking-tight sm:text-4xl">{heading}</h2>
-    {subheading && <p data-cms-bind={_cms_bind && `${_cms_bind}.subheading`} class="mt-4 text-lg opacity-90">{subheading}</p>}
+    <h2 data-editable="text" data-prop="heading" class="text-3xl font-bold tracking-tight sm:text-4xl">{heading}</h2>
+    {subheading && <p data-editable="text" data-prop="subheading" class="mt-4 text-lg opacity-90">{subheading}</p>}
     <div class="mt-8 flex justify-center gap-6" id="countdown" data-target={target_date}>
       <div class="text-center">
         <span class="block text-4xl font-bold md:text-5xl" id="countdown-days">00</span>
