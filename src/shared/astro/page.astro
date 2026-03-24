@@ -1,7 +1,7 @@
 ---
 /**
  * Content blocks loop — maps each block's `_name` to the matching Astro component
- * and renders them in sequence. Wraps with editable-region attributes for CloudCannon.
+ * and renders them in sequence. Uses CloudCannon editable-component wrapper for visual editing.
  */
 
 // Import all section components
@@ -58,14 +58,32 @@ const componentMap: Record<string, any> = {
 };
 ---
 
-<div class="contents" data-cms-bind="#content_blocks">
+<script>
+  if (window.inEditorMode) {
+    import('../../scripts/register-components.ts').catch((error) => {
+      console.warn('Failed to load CloudCannon component registration:', error);
+    });
+  }
+</script>
+
+<div
+  class="contents"
+  data-editable="array"
+  data-prop="content_blocks"
+  data-id-key="_name"
+  data-component-key="_name"
+>
   {content_blocks.map((block: any, index: number) => {
     const Component = componentMap[block._name];
     if (!Component) return null;
     return (
-      <div data-cms-bind={`#content_blocks.${index}`} data-component={block._name}>
-        <Component {...block} _cms_bind={`#content_blocks.${index}`} />
-      </div>
+      <editable-component
+        data-editable="array-item"
+        data-id={block._name}
+        data-component={block._name}
+      >
+        <Component {...block} />
+      </editable-component>
     );
   })}
 </div>

@@ -31,8 +31,8 @@ const {
 
 <SectionWrapper>
   <div class="mx-auto max-w-3xl text-center">
-    <h2 data-cms-bind={_cms_bind && `${_cms_bind}.heading`} class="text-3xl font-bold tracking-tight text-secondary sm:text-4xl">{heading}</h2>
-    <p data-cms-bind={_cms_bind && `${_cms_bind}.subheading`} class="mt-4 text-lg text-text-muted">{subheading}</p>
+    <h2 data-editable="text" data-prop="heading" class="text-3xl font-bold tracking-tight text-secondary sm:text-4xl">{heading}</h2>
+    <p data-editable="text" data-prop="subheading" class="mt-4 text-lg text-text-muted">{subheading}</p>
   </div>
   <div class="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
     {testimonials.map((t, i) => (
@@ -44,14 +44,14 @@ const {
             ))}
           </div>
         )}
-        <blockquote data-cms-bind={_cms_bind && `${_cms_bind}.testimonials.${i}.quote`} class="text-text-muted leading-relaxed">"{t.quote}"</blockquote>
+        <blockquote data-editable="text" data-prop={`testimonials.${i}.quote`} class="text-text-muted leading-relaxed">"{t.quote}"</blockquote>
         <div class="mt-6 flex items-center gap-3">
           {t.avatar && (
-            <img src={t.avatar} alt={t.author} class="h-10 w-10 rounded-full object-cover" loading="lazy" />
+            <img src={t.avatar} alt={t.author} data-editable="image" data-prop={`testimonials.${i}.avatar`} class="h-10 w-10 rounded-full object-cover" loading="lazy" />
           )}
           <div>
-            <p data-cms-bind={_cms_bind && `${_cms_bind}.testimonials.${i}.author`} class="font-semibold text-secondary">{t.author}</p>
-            <p data-cms-bind={_cms_bind && `${_cms_bind}.testimonials.${i}.role`} class="text-sm text-text-muted">{t.role}</p>
+            <p data-editable="text" data-prop={`testimonials.${i}.author`} class="font-semibold text-secondary">{t.author}</p>
+            <p data-editable="text" data-prop={`testimonials.${i}.role`} class="text-sm text-text-muted">{t.role}</p>
           </div>
         </div>
       </div>

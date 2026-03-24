@@ -19,7 +19,7 @@ const {
 
 <SectionWrapper>
   <div class:list={['mx-auto max-w-3xl', alignment === 'center' && 'text-center']}>
-    <h2 data-cms-bind={_cms_bind && `${_cms_bind}.heading`} class="text-3xl font-bold tracking-tight text-secondary sm:text-4xl">{heading}</h2>
-    {subheading && <p data-cms-bind={_cms_bind && `${_cms_bind}.subheading`} class="mt-4 text-lg text-text-muted">{subheading}</p>}
+    <h2 data-editable="text" data-prop="heading" class="text-3xl font-bold tracking-tight text-secondary sm:text-4xl">{heading}</h2>
+    {subheading && <p data-editable="text" data-prop="subheading" class="mt-4 text-lg text-text-muted">{subheading}</p>}
   </div>
 </SectionWrapper>

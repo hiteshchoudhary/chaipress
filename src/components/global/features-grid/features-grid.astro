@@ -29,10 +29,10 @@ const {
 
 <SectionWrapper background="light">
   <div class="mx-auto max-w-3xl text-center">
-    <h2 data-cms-bind={_cms_bind && `${_cms_bind}.heading`} class="text-3xl font-bold tracking-tight text-secondary sm:text-4xl">
+    <h2 data-editable="text" data-prop="heading" class="text-3xl font-bold tracking-tight text-secondary sm:text-4xl">
       {heading}
     </h2>
-    <p data-cms-bind={_cms_bind && `${_cms_bind}.subheading`} class="mt-4 text-lg text-text-muted">{subheading}</p>
+    <p data-editable="text" data-prop="subheading" class="mt-4 text-lg text-text-muted">{subheading}</p>
   </div>
   <div class="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
     {features.map((feature, i) => (
@@ -40,8 +40,8 @@ const {
         {feature.icon && (
           <span class="text-3xl">{feature.icon}</span>
         )}
-        <h3 data-cms-bind={_cms_bind && `${_cms_bind}.features.${i}.title`} class="mt-4 text-lg font-semibold text-secondary">{feature.title}</h3>
-        <p data-cms-bind={_cms_bind && `${_cms_bind}.features.${i}.description`} class="mt-2 text-text-muted">{feature.description}</p>
+        <h3 data-editable="text" data-prop={`features.${i}.title`} class="mt-4 text-lg font-semibold text-secondary">{feature.title}</h3>
+        <p data-editable="text" data-prop={`features.${i}.description`} class="mt-2 text-text-muted">{feature.description}</p>
       </div>
     ))}
   </div>
