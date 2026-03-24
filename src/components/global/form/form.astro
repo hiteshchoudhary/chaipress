@@ -35,22 +35,8 @@ const {
 <SectionWrapper background="light">
   <div class="mx-auto max-w-lg">
     <div class="text-center">
-      <h2
-        data-cms-bind={_cms_bind && `${_cms_bind}.heading`}
-        data-editable="text"
-        data-prop="heading"
-        class="text-3xl font-bold tracking-tight text-secondary sm:text-4xl"
-      >
-        {heading}
-      </h2>
-      <p
-        data-cms-bind={_cms_bind && `${_cms_bind}.subheading`}
-        data-editable="text"
-        data-prop="subheading"
-        class="mt-4 text-lg text-text-muted"
-      >
-        {subheading}
-      </p>
+      <h2 data-cms-bind={_cms_bind && `${_cms_bind}.heading`} class="text-3xl font-bold tracking-tight text-secondary sm:text-4xl">{heading}</h2>
+      <p data-cms-bind={_cms_bind && `${_cms_bind}.subheading`} class="mt-4 text-lg text-text-muted">{subheading}</p>
     </div>
     <form class="mt-8 space-y-5" data-success-message={success_message}>
       {fields.map((field) => (
